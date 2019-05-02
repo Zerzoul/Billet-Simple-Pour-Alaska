@@ -7,10 +7,11 @@
         <header>
             <?php include 'header.php'; ?>
             <nav>
-                <?php include 'news.php'; ?>
+                <?php include 'nav.php'; ?>
             </nav>
         </header>
         <section>
+            <?= $content ?>
         </section>
         <footer>
         <?php include 'footer.php'; ?>
