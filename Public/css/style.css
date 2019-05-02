@@ -1,11 +1,17 @@
 body{
     background-color: #fbf7f4;
-    margin: 0%;
+    margin: 0;
+    padding:0;
+    color: #666666;
     
 }
-ul{
+ul,h1,h2,h3,h4,h5,h6,p{
     margin :0;
     padding:0;
+}
+a{
+    color: #666666;
+    text-decoration: none;
 }
 /*HEADER*/
 .image_header{
@@ -21,13 +27,17 @@ ul{
 }
 /*NAVIGATION*/
 .nav{
+    margin: auto;
     height: 130px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
+.nav_list_content{
+    margin: auto;
+    width: 70%;
+}
 .nav_list{
-    margin: 0 316px 0 315px;
     display: flex;
     justify-content: space-between;
 }
@@ -38,7 +48,6 @@ ul{
 .nav_list li{
     list-style-type: none;
     font-size: 1.5em;
-    color: #666666;
     padding-bottom: 6px
 }
 .nav_list a:hover,
@@ -51,10 +60,147 @@ ul{
     background-repeat: repeat-x;
 }
 /*BODY CONTENT*/
-.body_content{
-    margin: auto;
+.body{
     width: 70%;
-    height: 500px;
+    margin: auto;
+}
+.body_content{
+    background-color: white;
+    padding: 15px 30px 15px 30px;
+    margin-bottom: 2%;
+}
+.comment_content{
+    padding: 15px 30px 15px 30px;
+    margin-bottom: 2%;
+}
+.comment_body_content{
+    width: 85%;
+    margin: auto;
+    background-color: white;
+    padding: 15px 30px 15px 30px;
+    margin-top: 2%;
+}
+.news_content{
+    width: 75%;
+    background-color: white;
+    padding: 15px 30px 15px 30px;
+    margin-bottom: 2%;
+}
+.title_content{
+    border-bottom: 1px solid #666666;
+    padding-bottom: 1%;
+}
+.undertitle_content{
+    border-bottom: 1px solid #666666;
+    padding-bottom: 1%;
+    font-style: italic;
+}
+.title_content h2{
+    font-size: 3em;
+}
+.title_content h4{
+    font-size: 2em;
+}
+
+.title_content p{
+    font-size: 1.2em;
+}
+.title_content .date{
+    font-style: italic;
+}
+.block{
+    margin-top:2%;
+    text-align: justify;
+}
+.news_infos_elmt{
+    margin-top: 1%;
+    font-style: italic;
+}
+.news_flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.news_date{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1%;
+}
+/*FORM*/
+.comment_form{
+    width: 85%;
+    margin: auto;
+    padding: 15px 30px 15px 30px;
+    margin-top: 2%;
+}
+label{
+    font-style: italic;
+}
+.form_content{
+    width:auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2%;
+}
+textarea{
+    padding: 0;
+}
+.input_size{
+    border: none;
+    width: 85%;
+    height: 30px;
+    padding: 0 1% 0 1%;
+}
+.textarea_size{
+    height: 140px;
+    border: none;
+    width: 85%;
+    padding: 1%;
+    resize: none;
+}
+/*EPISODE*/
+.synopsis_content_flex{
+    display: flex;
+    justify-content: center;
+}
+.btn_synopsis_elmnt{
+    margin: 4% 0 4% 0;
+}
+.episode_table_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1%;
+}
+.resume{
+    width: 50%;
+}
+.btn_elmt{
+    margin-right: 5%;
+}
+/*ABOUT*/
+.about_content{
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title_about{
+    font-size: 2em;
+    padding: 4% 0 4% 0;
+}
+.portrait{
+    background-color: grey;
+    width:200px;
+    height: 250px;
+}
+.about{
+    text-align: justify;
+}
+.signature_about{
+    margin:  5% 10% 0 0;
+    align-self: flex-end;
 }
 /*FOOTER*/
 .footer_block{

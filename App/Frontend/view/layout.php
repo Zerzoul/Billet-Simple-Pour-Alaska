@@ -10,7 +10,7 @@
                 <?php include 'nav.php'; ?>
             </nav>
         </header>
-        <section>
+        <section class="body">
             <?= $content ?>
         </section>
         <footer>
