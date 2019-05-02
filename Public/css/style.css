@@ -28,7 +28,7 @@ a{
 /*NAVIGATION*/
 .nav{
     margin: auto;
-    height: 130px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -36,13 +36,14 @@ a{
 .nav_list_content{
     margin: auto;
     width: 70%;
+    height: 130px;
 }
 .nav_list{
     display: flex;
     justify-content: space-between;
 }
 .nav_list a{
-    padding: 1% 0 1% 0;
+    padding: 2% 0 1% 0;
     text-decoration: none;
 }
 .nav_list li{
