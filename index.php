@@ -3,16 +3,18 @@ require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
 use \framework\Page;
+use \framework\Manager;
 
 require 'app/models/NewsManager.php';
 use \Models\NewsManager;
-$news = new NewsManager();
-$news->getNewsPost();
+
+$dbConnect = new Manager('billetsimplepouralaska','localhost','root','root');
+
+// $news = new NewsManager();
+// $news->getListNews();
 
 ob_start();
 try {
-
-
     if(isset($_GET['action'])){
         $page = new Page($_GET['action']);
         $page->getPage();
