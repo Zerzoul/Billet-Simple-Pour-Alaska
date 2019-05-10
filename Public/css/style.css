@@ -106,7 +106,7 @@ a{
 .title_content p{
     font-size: 1.2em;
 }
-.title_content .date{
+.date{
     font-style: italic;
 }
 .block{
@@ -143,6 +143,10 @@ label{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2%;
+}
+.form_flex{
+    display: flex;
+    justify-content: center;
 }
 textarea{
     padding: 0;
