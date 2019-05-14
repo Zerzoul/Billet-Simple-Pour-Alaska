@@ -5,15 +5,15 @@ use \framework\Manager;
 class NewsManager extends Manager{
 
     public function getListNews(){
-        $getNews = $this->pdo->query('SELECT id, title, post, date_create, date_modif FROM newspost');
+        $getNews = $this->pdo->query('SELECT id, title, post, date_create, date_modif FROM newspost WHERE statue ='. parent::PUBLISHED .' ORDER BY id DESC');
         $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
         return $dataNews;
     }
 
-    public function getNews($id){
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id = :id');
-        $getNews->execute(array(':id' => $id));
-        $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
+    public function getTheNews($id){
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue ='. parent::PUBLISHED .'');
+        $getNews->execute(array('id' => $id));
+        $dataNews = $getNews->fetch(\PDO::FETCH_OBJ);
         return $dataNews;
     }
 }

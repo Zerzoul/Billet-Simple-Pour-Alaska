@@ -15,9 +15,7 @@ $dsn = array(
 ob_start();
 try {
 
-    $dbConnect = new Manager($dsn);
-    var_dump($dsn);
-
+    $dbConnect = new Manager();
     if(isset($_GET['action'])){
         $page = new Routerex($_GET['action']);
         $page->run();

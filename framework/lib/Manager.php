@@ -6,7 +6,21 @@ class Manager{
     protected $pdo;
     protected $dsn = [];
 
-    public function __construct($dsn){
+    /*PUBLICATION STATUE POST*/
+    const PUBLISHED = 1;
+    const VALIDATION_BEFORE = 2;
+    const ROUGH = 3;
+
+    /*PUBLICATION STATUE COMS*/
+    const COM_VALID = 4;
+    const COM_IGNORE = 2;
+
+    public function __construct($dsn = array(
+        'name' => 'billetsimplepouralaska',
+        'host' => 'localhost',
+        'user' => 'root',
+        'pass' => 'root'
+    )){
         $this->setDSN($dsn);
         $this->initDbConnect();
     }
