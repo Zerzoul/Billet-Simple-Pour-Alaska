@@ -1,7 +1,7 @@
 <?php
 namespace framework;
 
-class Page{
+class Router{
 
-   
+    
 }

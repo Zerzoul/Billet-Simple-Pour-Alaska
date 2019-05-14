@@ -2,29 +2,31 @@
 require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
-use \framework\Page;
+use \framework\Routerex;
 use \framework\Manager;
 
-require 'app/models/NewsManager.php';
-use \Models\NewsManager;
-
-$dbConnect = new Manager('billetsimplepouralaska','localhost','root','root');
-
-// $news = new NewsManager();
-// $news->getListNews();
+$dsn = array(
+    'name' => 'billetsimplepouralaska',
+    'host' => 'localhost',
+    'user' => 'root',
+    'pass' => 'root'
+);
 
 ob_start();
 try {
+
+    $dbConnect = new Manager($dsn);
+    var_dump($dsn);
+
     if(isset($_GET['action'])){
-        $page = new Page($_GET['action']);
-        $page->getPage();
+        $page = new Routerex($_GET['action']);
+        $page->run();
     } else {
         require 'app/view/home/News/news.php';
     }
 }
 catch (Exception $e){
-    echo 'Erreur :'. $e->getMessage();
+    echo 'Erreur : '. $e->getMessage();
 }
-
 $content = ob_get_clean();
 require 'app/view/home/template/layout.php';

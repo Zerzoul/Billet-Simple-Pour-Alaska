@@ -4,21 +4,15 @@ namespace framework;
 class Manager{
 
     protected $pdo;
-    protected $dsn;
+    protected $dsn = [];
 
-    public function __construct($name, $host, $user, $pass){
-
-        $this->setDSN($name, $host, $user, $pass);
+    public function __construct($dsn){
+        $this->setDSN($dsn);
         $this->initDbConnect();
     }
 
-    public function setDSN($name, $host, $user, $pass){
-        $this->dsn = array(
-            'name' => $name,
-            'host' => $host,
-            'user' => $user,
-            'pass' => $pass
-        );
+    public function setDSN($dsn){
+        $this->dsn = $dsn;
     }
 
     public function initDbConnect(){
@@ -27,7 +21,7 @@ class Manager{
             $pdo = $pdo->MYSQLConnect();
             $this->pdo = $pdo;
         } else {
-            return ;
+            return $this->pdo;
         }
     }
 
