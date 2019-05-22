@@ -3,20 +3,25 @@ namespace framework;
 
 class PDOManager{
 
-    protected $dsn;
+    private $_name;
+    private $_host;
+    private $_pass;
+    private $_user;
+    private $_getDb;
 
-    public function __construct($dsn){
-        $this->setPDO($dsn);
-    }
-
-    public function setPDO($dsn){
-        $this->dsn = $dsn;
+    public function __construct($name, $host, $pass, $user){
+        $this->_name = $name;
+        $this->_host = $host;
+        $this->_pass = $pass;
+        $this->_user = $user;
     }
 
     public function MYSQLConnect(){
-        $pdo = new \PDO('mysql:host='.$this->dsn['host'].';dbname='.$this->dsn['name'].';charset=utf8', $this->dsn['user'], $this->dsn['pass']);
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $pdo = new \PDO('mysql:host='.$this->_host.';dbname='.$this->_name.';charset=utf8', $this->_user, $this->_pass);
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $this->_getDb = $pdo;
 
-        return $pdo;
-    }
+            return $this->_getDb;
+        }
+
 }

@@ -31,7 +31,7 @@ foreach($news as $new){
     </div>
     <div class="news_infos_elmt news_flex">
         <p><?= $com->counts ?> Commentaire(s)</p>
-        <a href="index.php?action=new&amp;id=<?= $new->id ?> ">Lire la suite</p>
+        <a href="index.php?action=new&amp;id=<?= $new->id ?> ">Lire la suite</p></a>
     </div>
 </div>
 

@@ -2,20 +2,16 @@
 require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
-use \framework\Routerex;
-use \framework\Manager;
 
-$dsn = array(
-    'name' => 'billetsimplepouralaska',
-    'host' => 'localhost',
-    'user' => 'root',
-    'pass' => 'root'
-);
+use \framework\Routerex;
 
 ob_start();
 try {
+    $app = \framework\App::getInstance();
+    $app->getDb();
+    $app->getManager('news');
 
-    $dbConnect = new Manager();
+
     if(isset($_GET['action'])){
         $page = new Routerex($_GET['action']);
         $page->run();

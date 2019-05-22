@@ -1,10 +1,9 @@
 <?php
 namespace controller;
-use \framework\Controller;
 
 require '../models/NewsManager.php';
 
-class NewsController extends Controller {
+class NewsController extends \framework\Controller {
 
     public function listNewsPost(){
 

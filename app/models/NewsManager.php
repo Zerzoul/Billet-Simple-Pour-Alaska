@@ -1,8 +1,8 @@
 <?php
 namespace models;
-use \framework\Manager;
 
-class NewsManager extends Manager{
+
+class NewsManager extends \framework\Manager{
 
     public function getListNews(){
         $getNews = $this->pdo->query('SELECT id, title, post, date_create, date_modif FROM newspost WHERE statue ='. parent::PUBLISHED .' ORDER BY id DESC');
@@ -11,7 +11,7 @@ class NewsManager extends Manager{
     }
 
     public function getTheNews($id){
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue ='. parent::PUBLISHED .'');
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue ='. parent::PUBLISHED );
         $getNews->execute(array('id' => $id));
         $dataNews = $getNews->fetch(\PDO::FETCH_OBJ);
         return $dataNews;
