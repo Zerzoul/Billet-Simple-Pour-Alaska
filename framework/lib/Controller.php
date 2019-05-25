@@ -3,21 +3,17 @@ namespace framework;
 
 class Controller {
 
-    protected $path;
     protected $controller;
 
-    public function __construct($name){
-        $this->setController($name);
-    }
+    public function __construct(){
 
-    public function setController($name){
-        $this->controller = $name;
-    }
+        if(is_null($this->controller)){
+            $split = explode('\\', get_class($this));
+            $class_name = end($split);
 
-    
-
-    public function getModel($model){
-        require '../../app/models/'.$model;
+            $this->controller = $class_name;
+        }
+        return $this->controller;
     }
 
 }

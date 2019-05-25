@@ -9,7 +9,6 @@ ob_start();
 try {
     $app = \framework\App::getInstance();
     $app->getDb();
-    $app->getManager('news');
 
 
     if(isset($_GET['action'])){

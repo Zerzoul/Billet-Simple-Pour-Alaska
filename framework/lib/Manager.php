@@ -17,7 +17,7 @@ class Manager{
 
     public function __construct($dbConnect){
         $this->pdo = $dbConnect;
-        var_dump(get_class($this));
+
         if(is_null($this->manager)){
             $split = explode('\\', get_class($this));
             $class_name = end($split);

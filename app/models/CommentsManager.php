@@ -11,13 +11,13 @@ class CommentsManager extends Manager{
     }
 
     public function comments($id){
-        $getComs = $this->pdo->prepare('SELECT id, news_id, author, comments, date FROM newscomments WHERE news_id = :news_id AND statue = '.parent::COM_VALID.'');
+        $getComs = $this->pdo->prepare('SELECT id, news_id, author, comments, date FROM newscomments WHERE news_id = :news_id AND statue = '.parent::COM_VALID);
         $getComs->execute(array('news_id' => $id));
         $dataComs = $getComs->fetchAll(\PDO::FETCH_OBJ);
         return $dataComs;
     }
     public function countComs($id){
-        $getComs = $this->pdo->prepare('SELECT COUNT(*) AS counts FROM newscomments WHERE news_id = :news_id AND statue = '.parent::COM_VALID.'');
+        $getComs = $this->pdo->prepare('SELECT COUNT(*) AS counts FROM newscomments WHERE news_id = :news_id AND statue = '.parent::COM_VALID);
         $getComs->execute(array('news_id' => $id));
         $dataComs = $getComs->fetchAll(\PDO::FETCH_OBJ);
         return $dataComs;

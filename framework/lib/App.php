@@ -27,8 +27,16 @@ class App{
         $class_name = '\\models\\'.$class;
 
         require $class_path.'.php';
-        return new $class_name($this->_db_instance);
+        return new $class_name($this->getDb());
     }
+    public function getController($name){
+        $class = ucfirst($name).'Controller';
+        $class_path = 'app/controller/'.$class;
+        $class_name = '\\controller\\'.$class;
 
-    //TODO: factory controler getController
+        require $class_path.'.php';
+        return new $class_name();
+    }
+    
+
 }
