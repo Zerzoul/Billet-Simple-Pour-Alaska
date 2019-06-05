@@ -26,17 +26,20 @@ class App{
         $class_path = 'app/models/'.$class;
         $class_name = '\\models\\'.$class;
 
-        require $class_path.'.php';
+        require_once $class_path.'.php';
         return new $class_name($this->getDb());
     }
-    public function getController($name){
+    public function getController($name, $direction){
         $class = ucfirst($name).'Controller';
-        $class_path = 'app/controller/'.$class;
-        $class_name = '\\controller\\'.$class;
+        $direction = strtolower($direction);
+        $class_path = 'app/controllers/'.$direction.'/'.$class;
+        $class_name = '\\controllers\\'.$direction.'\\'.$class;
 
-        require $class_path.'.php';
-        return new $class_name();
+        require_once $class_path.'.php';
+        return new $class_name(self::getInstance());
     }
-    
+
+
+
 
 }
