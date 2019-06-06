@@ -18,4 +18,8 @@ class Controller {
         return $this->controller;
     }
 
+    public function getMethod($method){
+        return $method();
+    }
+
 }

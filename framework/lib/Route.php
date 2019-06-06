@@ -4,30 +4,33 @@ namespace framework;
 
 class Route{
 
-    private $path;
-    private $matches;
-    private $controller;
+    private $_path;
+    private $_matches;
+    private $_controller;
+    private $_method;
 
-    public function __construct($path, $controller){
-        $this->path = trim($path,'/');
-        $this->controller = $controller;
+    public function __construct($path, $controller, $method){
+        $this->_path = trim($path,'/');
+        $this->_controller = $controller;
+        $this->_method = $method;
     }
 
     public function match($url){
         $url = trim($url, '/');
-        $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
+        $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->_path);
         $regex = "#^$path$#i";
         if(!preg_match($regex, $url, $matches)){
             return false;
         }
 
-        $this->matches = $matches;
+        $this->_matches = $matches;
         return true;
     }
     public function call(){
         return array(
-            'path' => $this->matches,
-            'controller' => $this->controller,
+            'path' => $this->_matches,
+            'controller' => $this->_controller,
+            'method' => $this->_method,
         );
     }
 

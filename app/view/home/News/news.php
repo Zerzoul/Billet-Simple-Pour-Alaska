@@ -19,6 +19,6 @@
             <p>
                 <?= $com->counts ?> Commentaire(s)
             </p>
-            <a href="index.php?action=new&amp;id=<?= $new->id ?>">Lire la suite</p></a>
+            <a href="/Billet-Simple-Pour-Alaska/new/<?= $new->id ?>">Lire la suite</p></a>
         </div>
     </div>
