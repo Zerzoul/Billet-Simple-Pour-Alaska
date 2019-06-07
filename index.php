@@ -10,7 +10,7 @@ try {
     $router = new \framework\Router($_GET['url']);
 
     $router->getRoute('/', 'news', 'listNewsPost');
-    $router->getRoute('/new/:id', 'news', 'listNewsPost');
+    $router->getRoute('/:id', 'news', 'newsPost');
     
     $router->getRoute('/episodes', 'episodes', 'listChapter');
     $router->getRoute('/about', 'about', 'getAboutPage');
@@ -19,7 +19,14 @@ try {
 
     $getTheController = $app->getController($route['controller'], 'home');
     $method = $route['method'];
-    $getTheController->$method();
+    $path = $route['path'];
+
+    $param = null;
+    if(isset($path['1'])){
+        $param = $path['1'];
+    }
+
+    $getTheController->$method($param);
 
 }
 catch (Exception $e){

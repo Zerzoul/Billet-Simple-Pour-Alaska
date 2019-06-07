@@ -11,6 +11,13 @@ class CommentsController extends \framework\Controller {
     }
     public function getComs($id){
         //TODO: fetch tous les commentaires liées à l'id du post
+        $coms = $this->app->getManager('comments');
+        $coms = $coms->getComments($id);
+
+        foreach ($coms as $com){
+            $com;
+        }
+
     }
     public function addComment(){
         //TODO: ajoute un commentaire à la db

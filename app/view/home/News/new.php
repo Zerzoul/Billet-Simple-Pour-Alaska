@@ -1,12 +1,3 @@
-<?php
-    require 'app/models/NewsManager.php';
-    require 'app/models/CommentsManager.php';
-    use \models\NewsManager;
-    use \models\CommentsManager;
-    
-    $new = new NewsManager();
-    $new = $new->getTheNews($_GET['id']);
-?>
 
 <div class="body_content">
     <div class="title_content">
@@ -51,28 +42,17 @@
         </form>
     </div>
 </div>
-<?php
-    $coms = new CommentsManager();
-    $coms = $coms->countComs($new->id);
-    foreach($coms as $com){
-?>
+
 <div class="comment_content">
         <div class="undertitle_content news_flex">
             <h2>Les commentaires</h2>
-            <p><?= $com->counts ?> Commentaires</p>
+            <p><?= $com[0]->counts ?> Commentaire(s)</p>
         </div>
 
-<?php
-    }
-    $coms = new CommentsManager();
-    $coms = $coms->comments($new->id);
-    foreach($coms as $com){
-
-?>
         <div class="comment_body_content">
             <div class="title_content news_flex">
-                <h4><?=$com->author?></h4>
-                <p>Publié le 
+                <h4><?=$com[$key]->author?></h4>
+                <p>Publié le
                     <span class="date">
                         <?php
                             $date = new DateTime($com->date);
@@ -85,9 +65,4 @@
                 <p><?=$com->comments?></p>
             </div>
         </div>
-
-        <?php
-            }
-
-        ?>
 </div>

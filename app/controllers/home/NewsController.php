@@ -21,6 +21,17 @@ class NewsController extends \framework\Controller {
             require 'app/view/home/News/news.php';
         }
 
-}
+    }
+    public function newsPost($id){
+        $news = $this->app->getManager('news');
+        $new = $news->getTheNews($id);
+
+        $coms = $this->app->getController('comments', 'home');
+        $com = $coms->getCountCom($id);
+
+        $com;
+        $new;
+        require 'app/view/home/News/new.php';
+    }
 
 }
