@@ -4,33 +4,51 @@ namespace framework;
 
 class Route{
 
-    private $_path;
-    private $_matches;
-    private $_controller;
-    private $_method;
 
-    public function __construct($path, $controller, $method){
-        $this->_path = trim($path,'/');
-        $this->_controller = $controller;
-        $this->_method = $method;
+    private $_matches;
+    private $_routes;
+    private $_path;
+    private $_function;
+    private $_id = null;
+
+    public function __construct($routes){
+        $this->_path = trim($routes['path'], '/');
+        $this->_routes = $routes;
     }
 
     public function match($url){
+
         $url = trim($url, '/');
-        $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->_path);
-        $regex = "#^$path$#i";
-        if(!preg_match($regex, $url, $matches)){
+        $urlParse = explode('-', $url);
+
+        $pathParse = explode('-',$this->_path);
+
+        $regex = "#^$pathParse[0]$#i";
+        if (!preg_match($regex, $urlParse[0], $matches)) {
+            return false;
+        }
+
+        $regex = "#^$pathParse[0]$#i";
+        if (!preg_match($regex, $urlParse[0], $matches)) {
             return false;
         }
 
         $this->_matches = $matches;
+        for($i = 0; count($this->_routes)-1 > $i; $i++){
+            $this->_function[] = $this->_routes[$i];
+        }
+
+        if(isset($urlParse[1])){
+            $this->_id = $urlParse[1];
+        }
+
         return true;
     }
     public function call(){
         return array(
             'path' => $this->_matches,
-            'controller' => $this->_controller,
-            'method' => $this->_method,
+            'function' => $this->_function,
+            'id' => $this->_id,
         );
     }
 

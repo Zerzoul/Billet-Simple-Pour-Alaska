@@ -5,6 +5,7 @@ class App{
 
     private static $_instance;
     private $_db_instance;
+    private $_routes;
 
     public static function getInstance(){
         if(is_null(self::$_instance)){
@@ -12,9 +13,11 @@ class App{
         }
         return self::$_instance;
     }
-
+    public function initConfig($config){
+        return new Config($config);
+    }
     public function getDb(){
-        $config = Config::getInstance('dsn');
+        $config = $this->initConfig('dsn');
         if(is_null($this->_db_instance)){
             $db = new PDOManager($config->get('name'), $config->get('host'), $config->get('pass'), $config->get('user'));
             $this->_db_instance = $db->MYSQLConnect();
@@ -38,6 +41,18 @@ class App{
         require_once $class_path.'.php';
         return new $class_name(self::getInstance());
     }
+    public function initRouter($url){
+        $routes = $this->initConfig('routes');
+        $this->_routes = $routes->getAll();
+        return new Router($url, $this->_routes);
+    }
+    public function getPage($call){
+        if(!isset($call)){
+            throw new \Exception('No page to build');
+        }
+        return new Page($call, self::getInstance());
+    }
+
 
 
 

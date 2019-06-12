@@ -13,7 +13,7 @@ class CommentsManager extends Manager{
     public function countComs($id){
         $getComs = $this->pdo->prepare('SELECT COUNT(*) AS counts FROM newscomments WHERE news_id = :news_id AND statue = '.parent::COM_VALID);
         $getComs->execute(array('news_id' => $id));
-        $dataComs = $getComs->fetchAll(\PDO::FETCH_OBJ);
+        $dataComs = $getComs->fetch(\PDO::FETCH_LAZY );
         return $dataComs;
     }
     public function addComs(){

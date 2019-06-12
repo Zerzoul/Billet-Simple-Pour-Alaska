@@ -6,6 +6,10 @@ class Controller {
     protected $controller;
     protected $app;
 
+    const NEWS_PATH = 'app/view/home/News/news.php';
+    const NEW_PATH = 'app/view/home/News/new.php';
+    const NEW_COMMENTS_PATH = 'app/view/home/News/newsComments.php';
+
     public function __construct($app){
         $this->app = $app;
 
@@ -18,8 +22,5 @@ class Controller {
         return $this->controller;
     }
 
-    public function getMethod($method){
-        return $method();
-    }
 
 }

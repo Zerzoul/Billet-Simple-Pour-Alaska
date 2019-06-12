@@ -23,4 +23,7 @@ class Config{
         }
         return $this->_settings[$key];
     }
+    public function getAll(){
+        return $this->_settings;
+}
 }

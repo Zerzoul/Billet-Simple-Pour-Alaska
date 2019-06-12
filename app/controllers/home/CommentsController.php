@@ -14,9 +14,11 @@ class CommentsController extends \framework\Controller {
         $coms = $this->app->getManager('comments');
         $coms = $coms->getComments($id);
 
-        foreach ($coms as $com){
-            $com;
-        }
+
+        return $coms;
+//        foreach ($coms as $com){
+//            var_dump($com);
+//        }
 
     }
     public function addComment(){

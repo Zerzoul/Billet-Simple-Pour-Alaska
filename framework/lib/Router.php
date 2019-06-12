@@ -6,13 +6,10 @@ class Router{
     private $_url;
     private $_routes = [];
 
-    public function __construct($url){
+    public function __construct($url,$routes){
         $this->_url = $url;
-    }
+        $this->_routes = $routes;
 
-    public function getRoute($path, $controller, $method){
-        $route = new Route($path, $controller, $method);
-        $this->_routes[] = $route;
     }
 
     public function run(){
@@ -20,12 +17,14 @@ class Router{
         if(!isset($this->_routes)){
             throw new \Exception(' Routes does not exist ');
         }
-        foreach ($this->_routes as $route){
-            if($route->match($this->_url)){
-                return $route->call();
+        foreach ($this->_routes as $routes){
+            $getRoute = new Route($routes);
+
+            if($getRoute->match($this->_url)){
+               $call = $getRoute->call();
+               return $call;
             }
         }
         throw new \Exception('No matching routes');
     }
-
 }

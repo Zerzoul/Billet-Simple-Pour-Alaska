@@ -17,8 +17,8 @@
         </div>
         <div class="news_infos_elmt news_flex">
             <p>
-                <?= $com->counts ?> Commentaire(s)
+                <?= $coms->counts ?> Commentaire(s)
             </p>
-            <a href="/Billet-Simple-Pour-Alaska/<?= $new->id ?>">Lire la suite</p></a>
+            <a href="/Billet-Simple-Pour-Alaska/new-<?= $new->id ?>">Lire la suite</p></a>
         </div>
     </div>

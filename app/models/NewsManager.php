@@ -13,7 +13,7 @@ class NewsManager extends \framework\Manager{
     public function getTheNews($id){
         $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue ='. parent::PUBLISHED );
         $getNews->execute(array('id' => $id));
-        $dataNews = $getNews->fetch(\PDO::FETCH_OBJ);
+        $dataNews = $getNews->fetch(\PDO::FETCH_LAZY);
         return $dataNews;
     }
 }

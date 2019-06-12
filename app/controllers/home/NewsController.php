@@ -14,24 +14,28 @@ class NewsController extends \framework\Controller {
 
             $coms = $this->app->getController('comments', 'home');
             $coms = $coms->getCountCom($new->id);
-            foreach($coms as $com){
-                $com;
-            }
+
+            $coms;
             $new;
-            require 'app/view/home/News/news.php';
+            require self::NEWS_PATH;
         }
 
     }
     public function newsPost($id){
         $news = $this->app->getManager('news');
         $new = $news->getTheNews($id);
+        $new;
 
         $coms = $this->app->getController('comments', 'home');
-        $com = $coms->getCountCom($id);
+        $comCount = $coms->getCountCom($id);
+        $comCount;
 
-        $com;
-        $new;
-        require 'app/view/home/News/new.php';
+        $coms = $this->app->getManager('comments');
+        $coms = $coms->getComments($id);
+
+        $coms;
+        require self::NEW_PATH;
+
     }
 
 }
