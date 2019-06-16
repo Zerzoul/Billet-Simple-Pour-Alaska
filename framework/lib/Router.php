@@ -17,7 +17,8 @@ class Router{
         if(!isset($this->_routes)){
             throw new \Exception(' Routes does not exist ');
         }
-        foreach ($this->_routes as $routes){
+
+        foreach ($this->_routes[$_SERVER['REQUEST_METHOD']] as $routes){
             $getRoute = new Route($routes);
 
             if($getRoute->match($this->_url)){

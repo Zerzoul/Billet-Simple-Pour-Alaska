@@ -26,7 +26,7 @@
         <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="index.php?action=connect">Je m'inscris !</a></p>
     </div>
     <div class="comment_form">
-        <form action="app/controllers/home/CommentsController.php?id=<?= $new->id ?>" method="POST">
+        <form action="" method="POST">
             <div class="form_content">
                 <label for="">E-mail</label>
                 <input type="text" class="input_size" name="email" required>

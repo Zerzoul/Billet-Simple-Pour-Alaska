@@ -21,8 +21,18 @@ class CommentsController extends \framework\Controller {
 //        }
 
     }
-    public function addComment(){
-        //TODO: ajoute un commentaire à la db
+    public function addComment($id){
+        require 'ContentValidator.php';
+        $validator = new ContentValidator();
+        $email = $validator->emailContent($_POST['email']);
+        $comments = $validator->commentsContent($_POST['postComment']);
+
+        $users = $this->app->getController('users', 'home');
+        $author = $users->checkEmail($email);
+
+        $coms = $this->app->getManager('comments');
+        return $coms->addComs($id, $author, $comments);
+
     }
     public function validate(){
         //TODO: vérifie l'authentisité et renvoie une erreur s'il y a des failles de sécurité
