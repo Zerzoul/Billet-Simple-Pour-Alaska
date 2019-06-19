@@ -1,7 +1,7 @@
 <?php
 return array(
-    'name' => 'billetsimplepouralaska',
+    'name' => 'billet_simple_pour_lalaska',
     'host' => 'localhost',
     'user' => 'root',
-    'pass' => 'root'
+    'pass' => ''
 );

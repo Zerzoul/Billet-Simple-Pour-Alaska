@@ -12,12 +12,13 @@ class UsersController extends \framework\Controller
         $users =  $users->getUsers();
 
         foreach ($users as $user){
-            if($user['email'] === $email){
+            if($user->email === $email){
                 //TODO other condition if the user is already register and loged in
-                return $user['pseudo'];
+                return $user->pseudo;
             }
         }
-        $pseudoAnonyme =  $this->assignPseudo();
+        $pseudoAnonyme = $this->assignPseudo();
+        $this->addUser($pseudoAnonyme, $email);
         return $pseudoAnonyme;
     }
     public function assignPseudo(){
@@ -26,5 +27,9 @@ class UsersController extends \framework\Controller
         $pseudoId = $userCount->counts + 1;
         $pseudo = 'Anonyme0'.$pseudoId;
         return $pseudo;
+    }
+    public function addUser($pseudo, $email){
+        $users = $this->app->getManager('Users');
+        return $users->addUsers($pseudo, $email);
     }
 }

@@ -15,6 +15,10 @@ class Manager{
     const COM_VALID = 4;
     const COM_IGNORE = 5;
 
+    /*STATUE USER*/
+    const USER_ACTIF = 6;
+    const USER_BANNED = 7;
+
     public function __construct($dbConnect){
         $this->pdo = $dbConnect;
 
