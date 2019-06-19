@@ -31,7 +31,8 @@ class CommentsController extends \framework\Controller {
         $author = $users->checkEmail($email);
 
         $coms = $this->app->getManager('comments');
-        return $coms->addComs($id, $author, $comments);
+        $coms->addComs($id, $author, $comments);
+        header('location: /Billet-Simple-Pour-Alaska/new-'.$id);
 
     }
     public function validate(){
