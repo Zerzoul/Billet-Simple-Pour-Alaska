@@ -41,8 +41,8 @@ class App{
         require_once $class_path.'.php';
         return new $class_name(self::getInstance());
     }
-    public function initRouter($url){
-        $routes = $this->initConfig('routes');
+    public function initRouter($url, $routes){
+        $routes = $this->initConfig($routes);
         $this->_routes = $routes->getAll();
         return new Router($url, $this->_routes);
     }
@@ -51,6 +51,15 @@ class App{
             throw new \Exception('No page to build');
         }
         return new Page($call, self::getInstance());
+    }
+
+    public function forbidden(){
+        header('HTTP/1.0 403 forbidden');
+        die('Acces interdit');
+    }
+    public function notFound(){
+        header('HTTP/1.0 404 Not Found');
+        die('Page introuvable');
     }
 
 

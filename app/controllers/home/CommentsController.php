@@ -3,6 +3,7 @@ namespace controllers\home;
 
 class CommentsController extends \framework\Controller {
 
+    protected $validator = 'ContentValidator.php';
     public function getCountCom($id){
 
         $coms = $this->app->getManager('comments');
@@ -21,8 +22,9 @@ class CommentsController extends \framework\Controller {
 //        }
 
     }
-    public function addComment($id){
-        require 'ContentValidator.php';
+    public function addComment($id, $path){
+        require $this->validator;
+
         $validator = new ContentValidator();
         $email = $validator->emailContent($_POST['email']);
         $comments = $validator->commentsContent($_POST['postComment']);
@@ -32,7 +34,8 @@ class CommentsController extends \framework\Controller {
 
         $coms = $this->app->getManager('comments');
         $coms->addComs($id, $author, $comments);
-        header('location: /Billet-Simple-Pour-Alaska/new-'.$id);
+
+        header('location: /Billet-Simple-Pour-Alaska/'.$path.'-'.$id);
 
     }
     public function validate(){

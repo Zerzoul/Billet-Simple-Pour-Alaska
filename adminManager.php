@@ -2,16 +2,18 @@
 require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
+$app = \framework\App::getInstance();
+$auth = new \framework\Authentification($app->getDb());
+
 ob_start();
 try {
 
-    $app = \framework\App::getInstance();
-
-    $router = $app->initRouter($_GET['url'], 'publicRoutes');
+    var_dump($_GET['url']);
+    $router = $app->initRouter($_GET['url'], 'adminRoutes');
 
     $call = $router->run();
     $page = $app->getPage($call);
-    $page->build('home');
+    $page->build('admin');
 
 }
 catch (Exception $e){
@@ -19,5 +21,5 @@ catch (Exception $e){
 }
 
 $content = ob_get_clean();
-require 'app/view/home/template/layout.php';
+require 'app/view/admin/template/layout.php';
 
