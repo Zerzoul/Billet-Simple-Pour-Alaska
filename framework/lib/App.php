@@ -6,6 +6,7 @@ class App{
     private static $_instance;
     private $_db_instance;
     private $_routes;
+    private $_formBuilder;
 
     public static function getInstance(){
         if(is_null(self::$_instance)){
@@ -13,6 +14,14 @@ class App{
         }
         return self::$_instance;
     }
+    public function initForm(){
+        if(is_null($this->_formBuilder)){
+            $form = new Form();
+            $this->_formBuilder = $form;
+        }
+        return $this->_formBuilder;
+    }
+
     public function initConfig($config){
         return new Config($config);
     }
@@ -37,9 +46,9 @@ class App{
         $direction = strtolower($direction);
         $class_path = 'app/controllers/'.$direction.'/'.$class;
         $class_name = '\\controllers\\'.$direction.'\\'.$class;
-
+        $form = $this->initForm();
         require_once $class_path.'.php';
-        return new $class_name(self::getInstance());
+        return new $class_name(self::getInstance(), $form);
     }
     public function initRouter($url, $routes){
         $routes = $this->initConfig($routes);

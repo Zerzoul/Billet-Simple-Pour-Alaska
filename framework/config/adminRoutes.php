@@ -3,10 +3,14 @@
 return array( 'GET' =>
 
     [
+        'dashboard' => [ 'path' => '/',
+            ['controller' => 'authentification', 'method' => 'access']],
         'login' => [ 'path' => '/login',
-            ['controller' => 'authentification', 'method' => 'login']],
+            ['controller' => 'authentification', 'method' => 'formLogin']],
         'register' => [ 'path' => '/register',
-            ['controller' => 'authentification', 'method' => 'register']],
+            ['controller' => 'authentification', 'method' => 'formRegister']],
+        'deconnexion' => [ 'path' => '/deconnexion',
+            ['controller' => 'authentification', 'method' => 'deconnexion']],
 //        'news' => [ 'path' => '/',
 //        ['controller' => 'news', 'method' => 'listNewsPost']],
 //
@@ -22,7 +26,7 @@ return array( 'GET' =>
     ],
 
     'POST' => [
-        'new' => ['path' => '/new-id',
-            ['controller' => 'comments', 'method' => 'addComment']],
+        'new' => ['path' => 'login',
+            ['controller' => 'authentification', 'method' => 'authValidator']],
     ]
 );

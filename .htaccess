@@ -2,5 +2,11 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
-RewriteRule ^(.*)$ adminManager.php?url=$1 [QSA,L]
+RewriteRule ^adminManager/([0-9a-zA-Z]+)$ adminManager.php?action=$1 [L]
+RewriteRule ^([0-9a-zA-Z]+)$ index.php?url=$1 [NC,L]
+
+
+
+
+
+

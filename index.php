@@ -6,7 +6,6 @@ ob_start();
 try {
 
     $app = \framework\App::getInstance();
-
     $router = $app->initRouter($_GET['url'], 'publicRoutes');
 
     $call = $router->run();

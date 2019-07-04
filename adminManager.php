@@ -2,24 +2,23 @@
 require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
-$app = \framework\App::getInstance();
-$auth = new \framework\Authentification($app->getDb());
+session_start();
 
 ob_start();
 try {
+    $app = \framework\App::getInstance();
 
-    var_dump($_GET['url']);
-    $router = $app->initRouter($_GET['url'], 'adminRoutes');
+    $router = $app->initRouter($_GET['action'], 'adminRoutes');
 
     $call = $router->run();
     $page = $app->getPage($call);
     $page->build('admin');
-
 }
 catch (Exception $e){
     echo 'Erreur : '. $e->getMessage();
 }
 
-$content = ob_get_clean();
+    $content = ob_get_clean();
+
 require 'app/view/admin/template/layout.php';
 
