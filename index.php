@@ -2,15 +2,20 @@
 require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
+//var_dump($_GET);
+if(isset($_GET['url'])){$var = $_GET['url']; $route = 'publicRoutes'; $direction = 'home';}
+if(isset($_GET['action'])&& $_GET['url'] === 'index.php'){$var = $_GET['action']; $route = 'adminRoutes'; $direction = 'admin';}
+
+session_start();
 ob_start();
 try {
 
     $app = \framework\App::getInstance();
-    $router = $app->initRouter($_GET['url'], 'publicRoutes');
+    $router = $app->initRouter($var, $route);
 
     $call = $router->run();
     $page = $app->getPage($call);
-    $page->build('home');
+    $page->build($direction);
 
 }
 catch (Exception $e){
@@ -18,5 +23,5 @@ catch (Exception $e){
 }
 
 $content = ob_get_clean();
-require 'app/view/home/template/layout.php';
+require 'app/view/'.$direction.'/template/layout.php';
 

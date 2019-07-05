@@ -1,9 +1,9 @@
-RewriteEngine on
+RewriteEngine On
+
 
 RewriteCond %{REQUEST_FILENAME} !-f
-
-RewriteRule ^adminManager/([0-9a-zA-Z]+)$ adminManager.php?action=$1 [L]
-RewriteRule ^([0-9a-zA-Z]+)$ index.php?url=$1 [NC,L]
+RewriteRule ^adminManager/(.*)$ index.php?action=$1 [QSA,L]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 
 
 

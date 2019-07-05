@@ -9,6 +9,11 @@ class NewsManager extends \framework\Manager{
         $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
         return $dataNews;
     }
+    public function getListbillet(){
+        $getNews = $this->pdo->query('SELECT id, title, post, date_create, date_modif FROM newspost');
+        $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
+        return $dataNews;
+    }
 
     public function getTheNews($id){
         $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue ='. parent::PUBLISHED );

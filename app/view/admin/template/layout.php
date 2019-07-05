@@ -12,21 +12,29 @@
 </header>
 
 <section>
-    <!-- variable php si admin authentifier -->
-    <?php
-    if(isset($_SESSION['admin'])){
-    ?>
-    <section>
-        <nav>
-            <?php include 'nav.php'; ?>
-        </nav>
-    </section>
-    <?php
-    }
-    ?>
-    <section class="body">
-        <?= $content ?>
-    </section>
+    <div class="container p-0 m-0 w-100 h-100">
+        <div class="row">
+        <!-- variable php si admin authentifier -->
+            <div class="col-sm-3">
+            <?php
+            if(isset($_SESSION['admin'])){
+            ?>
+            <section>
+                <nav>
+                    <?php include 'nav.php'; ?>
+                </nav>
+            </section>
+            <?php
+            }
+            ?>
+            </div>
+            <div class="col-sm-8">
+                <section>
+                    <?= $content ?>
+                </section>
+            </div>
+        </div>
+    </div>
 </section>
 
 

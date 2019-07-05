@@ -11,18 +11,10 @@ return array( 'GET' =>
             ['controller' => 'authentification', 'method' => 'formRegister']],
         'deconnexion' => [ 'path' => '/deconnexion',
             ['controller' => 'authentification', 'method' => 'deconnexion']],
-//        'news' => [ 'path' => '/',
-//        ['controller' => 'news', 'method' => 'listNewsPost']],
-//
-//        'new' => ['path' => '/new-id',
-//            ['controller' => 'news', 'method' => 'newsPost'],
-//            ['controller' => 'comments', 'method' => 'getComs']],
-//
-//        'episodes' => ['path' => '/episodes',
-//            ['controller' => 'episodes', 'method' => 'listChapter']],
-//
-//        'chapter' => ['path' => '/chapter-id',
-//            ['controller' => 'chapter', 'method' => '']]
+
+        'billets' => [ 'path' => '/billets',
+            ['controller' => 'billet', 'method' => 'displayAllBillet']],
+
     ],
 
     'POST' => [

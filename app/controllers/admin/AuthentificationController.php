@@ -28,9 +28,9 @@ class AuthentificationController extends \framework\Controller
 
     public function access(){
         if(isset($_SESSION['admin'])){
-             header("Location: ?action=dashboard");
+             header("Location: dashboard");
         } else {
-            header("Location: ?action=login");
+            header("Location: login");
         }
 
     }

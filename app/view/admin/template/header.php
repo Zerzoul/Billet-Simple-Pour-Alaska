@@ -1,4 +1,4 @@
-<div class="p-3 mb-2 bg-info text-white">
+<div class="p-3 mb-0 bg-info text-white">
     <?php
     if(isset($_SESSION['admin'])){
     ?>

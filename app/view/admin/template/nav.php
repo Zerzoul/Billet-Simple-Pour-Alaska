@@ -1,15 +1,36 @@
-<div>
-    <h1>Nav</h1>
-    <ul class="nav flex-column">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+<div class=" p-3 bg-info column text-white h-100" style="height:100%;">
+        <div class="col-sm">
+            <div class="dropdown-divider"></div>
+            <div class="text-center">
+                <h2>DashBoard</h2>
             </div>
-        </li>
-    </ul>
+
+            <div class="btn-group col-sm pt-2">
+                <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Billets
+                </button>
+                <div class="dropdown-menu col-sm">
+                    <a class="dropdown-item" href="add-billet">Nouveau Billet</a>
+                    <a class="dropdown-item" href="billets">Billets</a>
+                    <a class="dropdown-item" href="billet-trash">Corbeille</a>
+                </div>
+        </div>
+            <div class="btn-group col-sm pt-2">
+                <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Commentaires
+                </button>
+                <div class="dropdown-menu col-sm">
+                    <a class="dropdown-item" href="comments">Commentaires</a>
+                    <a class="dropdown-item" href="comment-trash">Corbeille</a>
+                </div>
+            </div>
+            <div class="btn-group col-sm pt-2">
+                <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Utilisateur
+                </button>
+                <div class="dropdown-menu col-sm">
+                    <a class="dropdown-item" href="#">Commentaires</a>
+                    <a class="dropdown-item" href="#">Corbeille</a>
+            </div>
+     </div>
 </div>
