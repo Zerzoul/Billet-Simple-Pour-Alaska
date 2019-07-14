@@ -12,10 +12,11 @@
 </header>
 
 <section>
-    <div class="container p-0 m-0 w-100 h-100">
-        <div class="row">
+    <div class="container-fluid p-0 m-0 h-100">
+        <div>
+        <div class="row m-0">
         <!-- variable php si admin authentifier -->
-            <div class="col-sm-3">
+            <div class="col-2 p-0">
             <?php
             if(isset($_SESSION['admin'])){
             ?>
@@ -28,11 +29,12 @@
             }
             ?>
             </div>
-            <div class="col-sm-8">
+            <div class="col-9">
                 <section>
                     <?= $content ?>
                 </section>
             </div>
+        </div>
         </div>
     </div>
 </section>

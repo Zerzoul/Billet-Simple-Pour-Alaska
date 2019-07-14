@@ -4,7 +4,7 @@ require 'framework/lib/Autoloader.php';
 
 //var_dump($_GET);
 if(isset($_GET['url'])){$var = $_GET['url']; $route = 'publicRoutes'; $direction = 'home';}
-if(isset($_GET['action'])&& $_GET['url'] === 'index.php'){$var = $_GET['action']; $route = 'adminRoutes'; $direction = 'admin';}
+if(isset($_GET['action']) || $_GET['url'] === 'index.php'){$var = $_GET['action']; $route = 'adminRoutes'; $direction = 'admin';}
 
 session_start();
 ob_start();

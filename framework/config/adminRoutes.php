@@ -13,7 +13,9 @@ return array( 'GET' =>
             ['controller' => 'authentification', 'method' => 'deconnexion']],
 
         'billets' => [ 'path' => '/billets',
-            ['controller' => 'billet', 'method' => 'displayAllBillet']],
+            ['controller' => 'billet', 'method' => 'billetManager']],
+        'billet' => [ 'path' => '/billet-id',
+            ['controller' => 'billet', 'method' => 'billetManager']],
 
     ],
 

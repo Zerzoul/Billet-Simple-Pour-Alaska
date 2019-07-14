@@ -15,17 +15,6 @@ class AuthentificationController extends \framework\Controller
         require 'app/view/admin/login/login.php';
     }
 
-    public function formRegister(){
-
-        $name = $this->form->input("text", "userName", "form-control");
-        $nameLabel = $this->form->label("userName", "User");
-        $pass = $this->form->input("password", "userPass", "form-control");
-        $passLabel = $this->form->label("userPass", "Password");
-        $submit = $this->form->submit("submit", "btn btn-info");
-
-        require 'app/view/admin/login/register.php';
-    }
-
     public function access(){
         if(isset($_SESSION['admin'])){
              header("Location: dashboard");
