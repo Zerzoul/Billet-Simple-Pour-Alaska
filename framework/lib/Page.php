@@ -25,8 +25,11 @@ class Page
 
             $getTheController = $this->app->getController($function[$i]['controller'], $direction);
 
-            $method = $function[$i]['method'];
-            $getTheController->$method($param);
+            if(!is_null($function[$i]['method'])){
+                $method = $function[$i]['method'];
+                $getTheController->$method($param);
+            }
+
         }
 
     }

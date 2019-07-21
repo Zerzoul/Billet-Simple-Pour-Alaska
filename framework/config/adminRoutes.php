@@ -13,14 +13,19 @@ return array( 'GET' =>
             ['controller' => 'authentification', 'method' => 'deconnexion']],
 
         'billets' => [ 'path' => '/billets',
-            ['controller' => 'billet', 'method' => 'billetManager']],
-        'billet' => [ 'path' => '/billet-id',
-            ['controller' => 'billet', 'method' => 'billetManager']],
+            ['controller' => 'ListBillet', 'method' => 'billetManager']],
+
+        'billet-id' => [ 'path' => '/billet-id',
+            ['controller' => 'ListBillet', 'method' => 'getId']],
+        'add-billet' => [ 'path' => '/add-billet',
+            ['controller' => 'AddBillet', 'method' => 'addBilletForm']],
 
     ],
 
     'POST' => [
         'new' => ['path' => 'login',
             ['controller' => 'authentification', 'method' => 'authValidator']],
+        'typeBillet' => ['path' => 'billets',
+            ['controller' => 'ListBillet', 'method' => 'setType']],
     ]
 );

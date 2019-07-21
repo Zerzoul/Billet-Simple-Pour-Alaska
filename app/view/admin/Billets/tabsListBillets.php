@@ -1,4 +1,4 @@
-<h5>List of billet</h5>
+<h5><?= $type ?></h5>
 <table class="table">
     <thead>
     <tr>
@@ -24,7 +24,7 @@
             <td>
                 <a href="billet-<?= $new->id ?>" class="text-light">
                     <button class="btn btn-primary">
-                       Check
+                       Edit
                     </button>
                 </a>
             </td>

@@ -1,7 +1,7 @@
 <div class="p-3 m-0">
     <div class="row justify-content-between">
         <div class="col-4">
-            <p class="font-weight-bold">Type</p>
+            <p class="font-weight-bold">Type :</p>
         </div>
 
         <div class="col-4 text-right">
@@ -19,19 +19,17 @@
         <div>
             <h5><?= $actionBillet->title ?></h5>
         </div>
-        <div class="font-weight-bold">
-            Resume / review
-        </div>
         <div>
             <p >
-                <?= $actionBillet->post ?>
+                <?= substr($actionBillet->post, 0, 200) ?>...
+
             </p>
         </div>
     </div>
 
     <div class="row justify-content-between">
         <div class="col-4">
-            <p class="font-weight-bold m-0">Statue</p>
+            <p class="font-weight-bold m-0">Statue :</p>
             <p class="p-0 m-0"> <?= $statue ?> </p>
         </div>
 
@@ -40,7 +38,8 @@
             ?>
         <div class="col-4 text-right">
             <p class="font-weight-bold m-0">Date de modification</p>
-            <p class="p-0 m-0"> La date</p>
+            <p class="p-0 m-0">  <?php $date = new DateTime($actionBillet->date_modif);
+                echo $date->format('d/m/Y'); ?></p>
         </div>
         <?php
         }
