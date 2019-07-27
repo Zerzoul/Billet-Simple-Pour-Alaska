@@ -3,14 +3,14 @@ namespace controllers\admin;
 
 class BilletController extends \framework\Controller{
 
-    protected $isIdNull = false;
+    protected $isIdNull = true;
     protected $isTypeNull = true;
     protected $type;
     protected $id;
 
 
 
-    public function getTheStatue($statue){
+    protected function getTheStatue($statue){
         switch($statue){
             case 1:
                 return 'Publier';
@@ -25,4 +25,8 @@ class BilletController extends \framework\Controller{
                 return null;
         }
     }
+    protected function selectTable($type){
+        return $type.'post';
+    }
+
 }

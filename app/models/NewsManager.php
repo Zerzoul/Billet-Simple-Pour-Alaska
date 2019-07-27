@@ -16,18 +16,40 @@ class NewsManager extends \framework\Manager{
         return $dataNews;
     }
 
-    public function getListBillet($type){
-        $getNews = $this->pdo->query('SELECT id, title, post, date_create, date_modif FROM '.$type.' ');
-        $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
-        return $dataNews;
+    public function getListBillet($table){
+        $getBillets = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM '.$table.' WHERE isTrashed=:isTrashed ');
+        $getBillets->execute(array('isTrashed' => '0'));
+        $getBillets = $getBillets->fetchAll(\PDO::FETCH_OBJ);
+        return $getBillets;
     }
 
-    public function getTheBillet($type, $id){
-        var_dump($type);
-        var_dump($id);
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue FROM '.$type.' WHERE id=:id ');
+    public function getTheBillet($table, $id){
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue, isTrashed FROM '.$table.' WHERE id=:id ');
         $getNews->execute(array('id' => $id));
         $dataNews = $getNews->fetch(\PDO::FETCH_LAZY);
         return $dataNews;
+    }
+    public function addBillet($table, $title, $post, $statue){
+        $prepareAdding = $this->pdo->prepare('INSERT INTO '.$table.'(title, post, statue) VALUES (:title, :post, :statue)');
+        $addBillet = $prepareAdding->execute(array(
+            'title' => $title,
+            'post' => $post,
+            'statue' => $statue,
+        ));
+        return $addBillet;
+    }
+    public function trashThisBillet($table, $id){
+        $trashThisBillet = $this->pdo->prepare('UPDATE '.$table.' SET isTrashed = :isTrashed WHERE id = :id');
+        $trashThisBillet = $trashThisBillet->execute(array(
+            'isTrashed' => '1',
+            'id' => $id
+        ));
+        return $trashThisBillet;
+    }
+
+    public function deleteThisBillet($table, $id){
+        $deleteThisBillet = $this->pdo->prepare('DELETE FROM '.$table.' WHERE id=:id ');
+        $deleteThisBillet = $deleteThisBillet->execute(array('id' => $id));
+        return $deleteThisBillet;
     }
 }

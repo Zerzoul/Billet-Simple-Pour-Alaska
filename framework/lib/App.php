@@ -7,6 +7,7 @@ class App{
     private $_db_instance;
     private $_routes;
     private $_formBuilder;
+    private $_controller;
 
     public static function getInstance(){
         if(is_null(self::$_instance)){
@@ -48,7 +49,12 @@ class App{
         $class_name = '\\controllers\\'.$direction.'\\'.$class;
         $form = $this->initForm();
         require_once $class_path.'.php';
-        return new $class_name(self::getInstance(), $form);
+
+        if($class != $this->_controller){
+            $this->_controller = new $class_name(self::getInstance(), $form);
+        }
+
+        return $this->_controller;
     }
     public function initRouter($url, $routes){
         $routes = $this->initConfig($routes);
@@ -60,15 +66,6 @@ class App{
             throw new \Exception('No page to build');
         }
         return new Page($call, self::getInstance());
-    }
-
-    public function forbidden(){
-        header('HTTP/1.0 403 forbidden');
-        die('Acces interdit');
-    }
-    public function notFound(){
-        header('HTTP/1.0 404 Not Found');
-        die('Page introuvable');
     }
 
 

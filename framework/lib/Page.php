@@ -15,11 +15,12 @@ class Page
     public function build($direction){
         $function = $this->_call['function'];
 
-        $param = null;
+        $params = null;
         $path = null;
-        if(isset($this->_call['id'])){
-            $param = $this->_call['id'];
-            $path = $this->_call['path'];
+
+        if(!empty($this->_call['params'])){
+
+            $params = $this->_call['params'];
         }
         for($i = 0; $i <= count($function)-1;$i++){
 
@@ -27,7 +28,11 @@ class Page
 
             if(!is_null($function[$i]['method'])){
                 $method = $function[$i]['method'];
-                $getTheController->$method($param);
+                if(is_null($params)){
+                    $getTheController->$method($params);
+                } else {
+                    $getTheController->$method($params['type'], $params['id']);
+                }
             }
 
         }

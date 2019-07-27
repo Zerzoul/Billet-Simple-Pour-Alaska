@@ -10,6 +10,7 @@ class Route{
     private $_path;
     private $_function;
     private $_id = null;
+    private $_type = null;
 
     public function __construct($routes){
         $this->_path = trim($routes['path'], '/');
@@ -17,7 +18,6 @@ class Route{
     }
 
     public function match($url){
-
         $url = trim($url, '/');
         $urlParse = explode('-', $url);
 
@@ -39,7 +39,10 @@ class Route{
         }
 
         if(isset($urlParse[1])){
-            $this->_id = $urlParse[1];
+            $this->_type = $urlParse[1];
+        }
+        if(isset($urlParse[2])){
+            $this->_id = $urlParse[2];
         }
 
         return true;
@@ -48,7 +51,10 @@ class Route{
         return array(
             'path' => $this->_matches,
             'function' => $this->_function,
-            'id' => $this->_id,
+            'params' => [
+                'type' => $this->_type,
+                'id' => $this->_id,
+                ]
         );
     }
 

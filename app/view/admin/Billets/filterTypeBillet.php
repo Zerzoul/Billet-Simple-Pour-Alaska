@@ -1,13 +1,11 @@
 <form action="" method="POST">
     <div class="row">
-        <div>
-            <label for="typeCheck">Type : </label>
-        </div>
+
+        <label for="typeCheck">Type : </label>
 
         <select name="type" class="form-control col-3" id="typeCheck" onchange="submit();">
-            <option value="">Type</option>
-            <option value="news">News</option>
-            <option value="episodes">Episodes</option>
+            <option value="news" <?php if($typeSelected == 'news') echo 'selected' ; ?>>News</option>
+            <option value="episodes" <?php if($typeSelected == 'episodes') echo 'selected' ; ?>>Episodes</option>
         </select>
 
     </div>

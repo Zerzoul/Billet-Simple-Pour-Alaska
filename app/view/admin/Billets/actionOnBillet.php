@@ -1,7 +1,7 @@
 <div class="p-3 m-0">
     <div class="row justify-content-between">
         <div class="col-4">
-            <p class="font-weight-bold">Type :</p>
+            <p class="font-weight-bold">Type : <?= ucfirst($typeSelected)?></p>
         </div>
 
         <div class="col-4 text-right">
@@ -48,7 +48,7 @@
 
     <div class="row justify-content-between mt-5 mx-1">
         <button type="button" class="btn btn-warning">Modification</button>
-        <button type="button" class="btn btn-danger">Supprimer</button>
+        <a href="delete-<?= $typeSelected ?>-<?= $actionBillet->id ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
     </div>
 
 </div>

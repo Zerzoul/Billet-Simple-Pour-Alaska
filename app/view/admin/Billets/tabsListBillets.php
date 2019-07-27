@@ -1,4 +1,4 @@
-<h5><?= $type ?></h5>
+<h5><?= ucfirst($typeSelected)?></h5>
 <table class="table">
     <thead>
     <tr>
@@ -22,7 +22,7 @@
                 echo $date->format('d/m/Y à H:i'); ?></td>
             <td><?= $new->title ?></td>
             <td>
-                <a href="billet-<?= $new->id ?>" class="text-light">
+                <a href="billet-<?= $type ?>-<?= $new->id ?>" class="text-light">
                     <button class="btn btn-primary">
                        Edit
                     </button>

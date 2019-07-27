@@ -1,5 +1,4 @@
 <?php
-
 if(!$isTypeNull){
     ?>
 <div class="border rounded p-2 mr-1 col-5">
@@ -10,7 +9,7 @@ if(!$isTypeNull){
 ?>
 
 <?php
-if($isIdNull){
+if(!$isIdNull){
     ?>
     <div class="border fixed rounded p-2 col-5" >
         <?php require 'actionOnBillet.php'; ?>
@@ -18,3 +17,4 @@ if($isIdNull){
     <?php
 }
 ?>
+
