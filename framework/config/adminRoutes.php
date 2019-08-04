@@ -20,27 +20,24 @@ return array( 'GET' =>
             ['controller' => 'ListBillet', 'method' => 'billetManager']],
 
         'add-billet' => [ 'path' => '/add-billet',
-            ['controller' => 'AddBillet', 'method' => 'billetForm']],
-
-        'billet-delete' => [ 'path' => '/delete-type-id',
-            ['controller' => 'ListBillet', 'method' => 'deleteBilletValidation']],
+            ['controller' => 'EditBillet', 'method' => 'billetForm']],
+        'billet-to-delete' => [ 'path' => '/delete-type-id',
+            ['controller' => 'DeleteBillet', 'method' => 'deleteBilletValidation']],
+        'billet-to-update' => [ 'path' => '/update-type-id',
+            ['controller' => 'EditBillet', 'method' => 'billetForm']],
 
     ],
 
     'POST' => [
         'new' => ['path' => 'login',
             ['controller' => 'authentification', 'method' => 'authValidator']],
-
         'typeBillet' => ['path' => 'billets',
             ['controller' => 'ListBillet', 'method' => 'selectTheType']],
         'typeBilletId' => ['path' => 'billet-type-id',
             ['controller' => 'ListBillet', 'method' => 'selectTheType']],
-
-
         'addBillet' => ['path' => 'add-billet',
-            ['controller' => 'AddBillet', 'method' => 'checkNewBillet']],
-
+            ['controller' => 'EditBillet', 'method' => 'checkNewBillet']],
         'billet-delete' => [ 'path' => '/delete-type-id',
-            ['controller' => 'ListBillet', 'method' => 'deleteBillet']],
+            ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
     ]
 );

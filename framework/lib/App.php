@@ -7,7 +7,7 @@ class App{
     private $_db_instance;
     private $_routes;
     private $_formBuilder;
-    private $_controller;
+
 
     public static function getInstance(){
         if(is_null(self::$_instance)){
@@ -49,12 +49,7 @@ class App{
         $class_name = '\\controllers\\'.$direction.'\\'.$class;
         $form = $this->initForm();
         require_once $class_path.'.php';
-
-        if($class != $this->_controller){
-            $this->_controller = new $class_name(self::getInstance(), $form);
-        }
-
-        return $this->_controller;
+        return new $class_name(self::getInstance(), $form);
     }
     public function initRouter($url, $routes){
         $routes = $this->initConfig($routes);
@@ -62,6 +57,7 @@ class App{
         return new Router($url, $this->_routes);
     }
     public function getPage($call){
+
         if(!isset($call)){
             throw new \Exception('No page to build');
         }

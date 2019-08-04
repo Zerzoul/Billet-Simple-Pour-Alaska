@@ -5,16 +5,16 @@
             <p >
                 Vous êtes sur le point <?= $messageToValid ?>
             </p>
-            <p>
+            <p class="font-weight-bold">
                 <?= $billetToDelete ?>
             </p>
         </div>
     </div>
 
     <div class="row mt-5 mx-1">
-        <a href="billet-<?= $type ?>-<?= $id ?>" ><button type="button" class="btn btn-warning mr-5">Annuler</button></a>
         <form action="" method="post">
-            <button type="button" class="btn btn-danger" onclick="submit();">Supprimer</button>
+            <input type="submit" name="validationDeleteBillet" value="Annuler" class="btn btn-warning mr-5" />
+            <input type="submit" name="validationDeleteBillet" value="Supprimer" class="btn btn-danger" />
         </form>
 
     </div>

@@ -4,7 +4,6 @@ namespace controllers\home;
 class NewsController extends \framework\Controller {
 
 
-
     public function listNewsPost(){
 
         $news = $this->app->getManager('news');
@@ -19,23 +18,19 @@ class NewsController extends \framework\Controller {
             $new;
             require self::NEWS_PATH;
         }
-
     }
     public function newsPost($id){
+
         $news = $this->app->getManager('news');
         $new = $news->getTheNews($id);
         $new;
-
         $coms = $this->app->getController('comments', 'home');
         $comCount = $coms->getCountCom($id);
         $comCount;
-
         $coms = $this->app->getManager('comments');
         $coms = $coms->getComments($id);
 
         $coms;
         require self::NEW_PATH;
-
     }
-
 }

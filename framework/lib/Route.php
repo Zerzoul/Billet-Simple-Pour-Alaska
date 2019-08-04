@@ -4,13 +4,14 @@ namespace framework;
 
 class Route{
 
-
     private $_matches;
     private $_routes;
     private $_path;
     private $_function;
     private $_id = null;
+    private $_matchId = null;
     private $_type = null;
+    private $_matchType = null;
 
     public function __construct($routes){
         $this->_path = trim($routes['path'], '/');
@@ -38,15 +39,38 @@ class Route{
             $this->_function[] = $this->_routes[$i];
         }
 
-        if(isset($urlParse[1])){
-            $this->_type = $urlParse[1];
-        }
-        if(isset($urlParse[2])){
-            $this->_id = $urlParse[2];
-        }
+
+        $this->splitParams($urlParse);
+
 
         return true;
     }
+    public function splitParams($urlParse){
+        foreach ($urlParse as $params){
+            if(preg_match('/[0-9]*/', $params, $id)){
+                if(!empty($id[0])){
+                    $this->_matchId = intval($id[0]);
+                }
+
+            };
+        }
+        foreach ($urlParse as $params){
+            if(preg_match('/news|episodes/', $params, $type)){
+                if(!empty($type[0])){
+                    $this->_matchType = htmlspecialchars($type[0]);
+                }
+            };
+        }
+
+        if(is_string($this->_matchType)){
+            $this->_type = $this->_matchType;
+        }
+
+        if(is_int($this->_matchId)){
+            $this->_id = $this->_matchId;
+        }
+    }
+
     public function call(){
         return array(
             'path' => $this->_matches,

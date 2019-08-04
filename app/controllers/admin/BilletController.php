@@ -8,8 +8,6 @@ class BilletController extends \framework\Controller{
     protected $type;
     protected $id;
 
-
-
     protected function getTheStatue($statue){
         switch($statue){
             case 1:
@@ -27,6 +25,18 @@ class BilletController extends \framework\Controller{
     }
     protected function selectTable($type){
         return $type.'post';
+    }
+
+    public function displayAllBillet($table){
+        $this->isTypeNull = false;
+        $news = $this->app->getManager('news');
+        return $news->getListBillet($table);
+
+    }
+    public function getTheBillet($table, $id){
+        $news = $this->app->getManager('news');
+        $this->isIdNull = false;
+        return $news->getTheBillet($table, $id);
     }
 
 }

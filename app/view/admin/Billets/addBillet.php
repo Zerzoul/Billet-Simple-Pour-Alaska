@@ -1,5 +1,5 @@
 <h3>Ajouter un nouveau billet</h3>
-<div>
+<div class="container">
 
         <?php if(isset($error)){ ?>
     <div class="alert alert-danger">
@@ -9,14 +9,30 @@
 
     <form action="" method="POST">
         <div>
-            <select name="type" class="form-control col-3" id="typeCheck">
-                <option value="">Type :</option>
-                <option value="news">News</option>
-                <option value="episodes">Episodes</option>
-            </select>
+            <div class="row justify-content-between pa-0">
+                    <?php
+                        if($addBilletOnly){
+                    ?>
+                    <select name="type" class="form-control col-3" id="typeCheck" required>
+                        <option value="">Type de billet :</option>
+                        <option value="news">News</option>
+                        <option value="episodes">Episodes</option>
+                    </select>
+                    <?php
+                        }?>
 
-            <span><?= $titleLabel ?></span>
-            <span><?= $title ?></span>
+                    <select name="statue" class="form-control col-3" id="typeCheck" required>
+                        <option value="">Statue Publication :</option>
+                        <option value="3">Brouillon</option>
+                        <option value="2">A valider</option>
+                        <option value="1">Publier</option>
+                    </select>
+            </div>
+            <div>
+                <?= $titleLabel ?>
+                <?= $title ?>
+            </div>
+
 
         </div>
         <div>
@@ -25,14 +41,7 @@
             </span>
         </div>
 
-        <div>
-            <select name="statue" class="form-control col-3" id="typeCheck">
-                <option value="">Statue :</option>
-                <option value="3">Brouillon</option>
-                <option value="2">A valider</option>
-                <option value="1">Publier</option>
-            </select>
-        </div>
+
 
         <div>
             <span>

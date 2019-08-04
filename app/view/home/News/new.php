@@ -23,7 +23,7 @@
         <h2>Laisser un commentaire ?</h2>
     </div>
     <div class="form_flex">
-        <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="index.php?action=connect">Je m'inscris !</a></p>
+        <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="/Billet-Simple-Pour-Alaska/connect">Je m'inscris !</a></p>
     </div>
     <div class="comment_form">
         <form action="" method="POST">

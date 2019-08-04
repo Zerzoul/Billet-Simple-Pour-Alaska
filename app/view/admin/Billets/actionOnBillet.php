@@ -47,7 +47,7 @@
     </div>
 
     <div class="row justify-content-between mt-5 mx-1">
-        <button type="button" class="btn btn-warning">Modification</button>
+        <a href="update-<?= $typeSelected ?>-<?= $actionBillet->id ?>"><button type="button" class="btn btn-warning">Modification</button></a>
         <a href="delete-<?= $typeSelected ?>-<?= $actionBillet->id ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
     </div>
 

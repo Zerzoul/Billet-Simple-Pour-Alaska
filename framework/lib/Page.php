@@ -26,11 +26,16 @@ class Page
 
             $getTheController = $this->app->getController($function[$i]['controller'], $direction);
 
+
             if(!is_null($function[$i]['method'])){
                 $method = $function[$i]['method'];
-                if(is_null($params)){
-                    $getTheController->$method($params);
-                } else {
+                if(is_null($params['type']) && is_null($params['id'])){
+                    $getTheController->$method();
+                } else if(isset($params['type'])) {
+                    $getTheController->$method($params['type']);
+                } else if(isset($params['id'])) {
+                    $getTheController->$method($params['id']);
+                } else{
                     $getTheController->$method($params['type'], $params['id']);
                 }
             }
