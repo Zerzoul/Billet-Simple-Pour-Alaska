@@ -42,6 +42,7 @@ class DeleteBilletController extends BilletController{
             $news->deleteThisBillet($table, $id);
         }
         $news->trashThisBillet($table, $id);
+        header('Location: billets');
     }
 
 }

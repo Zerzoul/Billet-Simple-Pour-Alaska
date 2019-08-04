@@ -38,6 +38,17 @@ class NewsManager extends \framework\Manager{
         ));
         return $addBillet;
     }
+    public function updateBillet($id, $table, $title, $post, $statue, $date){
+        $prepareUpdate = $this->pdo->prepare('UPDATE '.$table.' SET title = :title, post = :post, statue = :statue, date_modif = :date_modif WHERE id = :id');
+        $updateBillet = $prepareUpdate ->execute(array(
+            'id' => $id,
+            'title' => $title,
+            'post' => $post,
+            'statue' => $statue,
+            'date_modif' => $date
+        ));
+        return $updateBillet;
+    }
     public function trashThisBillet($table, $id){
         $trashThisBillet = $this->pdo->prepare('UPDATE '.$table.' SET isTrashed = :isTrashed WHERE id = :id');
         $trashThisBillet = $trashThisBillet->execute(array(

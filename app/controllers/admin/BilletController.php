@@ -23,7 +23,7 @@ class BilletController extends \framework\Controller{
                 return null;
         }
     }
-    protected function selectTable($type){
+    public function selectTable($type){
         return $type.'post';
     }
 
@@ -37,6 +37,27 @@ class BilletController extends \framework\Controller{
         $news = $this->app->getManager('news');
         $this->isIdNull = false;
         return $news->getTheBillet($table, $id);
+    }
+    public function updateBillet($id, $table, $title, $post, $statue, $date){
+        $updateBillet = $this->app->getManager('news');
+        $updateBillet = $updateBillet->updateBillet($id, $table, $title, $post, $statue, $date);
+
+        if($updateBillet){
+            return true;
+        } else {
+            $error = 'Une erreur c\'est prodduite. Votre billet n\'a pas pu être modifier';
+        }
+    }
+    public function addBillet($table, $title, $post, $statue){
+        $addBillet = $this->app->getManager('news');
+        $addBillet = $addBillet->addBillet($table, $title, $post, $statue);
+
+        if($addBillet){
+            return true;
+        } else {
+            $error = 'Une erreur c\'est prodduite. Votre billet n\'a pas pu être enregistrer';
+        }
+
     }
 
 }

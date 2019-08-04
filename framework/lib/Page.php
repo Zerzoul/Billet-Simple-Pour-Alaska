@@ -31,9 +31,9 @@ class Page
                 $method = $function[$i]['method'];
                 if(is_null($params['type']) && is_null($params['id'])){
                     $getTheController->$method();
-                } else if(isset($params['type'])) {
+                } else if(isset($params['type']) && count($params) === 1) {
                     $getTheController->$method($params['type']);
-                } else if(isset($params['id'])) {
+                } else if(isset($params['id']) && count($params) === 1) {
                     $getTheController->$method($params['id']);
                 } else{
                     $getTheController->$method($params['type'], $params['id']);

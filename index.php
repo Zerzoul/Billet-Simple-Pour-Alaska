@@ -10,6 +10,7 @@ session_start();
 ob_start();
 try {
 
+
     $app = \framework\App::getInstance();
     $router = $app->initRouter($var, $route);
 

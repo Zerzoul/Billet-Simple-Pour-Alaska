@@ -6,9 +6,9 @@ namespace controllers\admin;
 class AuthentificationController extends \framework\Controller
 {
     public function formLogin(){
-        $name = $this->form->input("text", "userName", "form-control");
+        $name = $this->form->input("text", "userName", "","form-control");
         $nameLabel = $this->form->label("userName", "User");
-        $pass = $this->form->input("password", "userPass", "form-control");
+        $pass = $this->form->input("password", "userPass", "","form-control");
         $passLabel = $this->form->label("userPass", "Password");
         $submit = $this->form->submit("submit", "btn btn-info");
 

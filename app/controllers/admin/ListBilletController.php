@@ -9,14 +9,12 @@ class ListBilletController extends BilletController
 {
 
     public function billetManager($type = null, $id = null){
-        if(!isset($_SESSION['admin'])) {
-            header("Location: login");
-            exit();
-        }
+
         if(is_null($type)){
             $type = 'news';
         }
         $typeSelected = $type;
+
 
         if(!is_null($type)){
             $table = $this->selectTable($type);

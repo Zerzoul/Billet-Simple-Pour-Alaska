@@ -38,9 +38,13 @@ return array( 'GET' =>
             ['controller' => 'ListBillet', 'method' => 'selectTheType']],
         'typeBilletId' => ['path' => 'billet-type-id',
             ['controller' => 'ListBillet', 'method' => 'selectTheType']],
-        'addBillet' => ['path' => 'add-billet',
-            ['controller' => 'EditBillet', 'method' => 'checkNewBillet']],
-        'billet-delete' => [ 'path' => '/delete-type-id',
+        
+        'create-Billet' => ['path' => 'add-billet',
+            ['controller' => 'EditBillet', 'method' => 'checkBillet']],
+        'Update-Billet' => ['path' => 'update-type-id',
+            ['controller' => 'EditBillet', 'method' => 'checkBillet']],
+
+        'delete-billet' => [ 'path' => '/delete-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
     ]
 );

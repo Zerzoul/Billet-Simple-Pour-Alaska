@@ -20,8 +20,8 @@
             <h5><?= $actionBillet->title ?></h5>
         </div>
         <div>
-            <p >
-                <?= substr($actionBillet->post, 0, 200) ?>...
+            <p>
+                <?= (substr(strip_tags($actionBillet->post), 0, 200)) ?>...
 
             </p>
         </div>

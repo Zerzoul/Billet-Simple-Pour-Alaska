@@ -39,13 +39,13 @@ class Route{
             $this->_function[] = $this->_routes[$i];
         }
 
-
         $this->splitParams($urlParse);
 
 
         return true;
     }
     public function splitParams($urlParse){
+
         foreach ($urlParse as $params){
             if(preg_match('/[0-9]*/', $params, $id)){
                 if(!empty($id[0])){
@@ -61,7 +61,6 @@ class Route{
                 }
             };
         }
-
         if(is_string($this->_matchType)){
             $this->_type = $this->_matchType;
         }
@@ -69,6 +68,7 @@ class Route{
         if(is_int($this->_matchId)){
             $this->_id = $this->_matchId;
         }
+
     }
 
     public function call(){
