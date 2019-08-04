@@ -29,8 +29,7 @@
                     Utilisateur
                 </button>
                 <div class="dropdown-menu col-sm">
-                    <a class="dropdown-item" href="#">Commentaires</a>
-                    <a class="dropdown-item" href="#">Corbeille</a>
+                    <a class="dropdown-item" href="users">Utilisateur</a>
             </div>
      </div>
 </div>

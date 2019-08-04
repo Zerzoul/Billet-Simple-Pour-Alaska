@@ -26,6 +26,9 @@ return array( 'GET' =>
         'billet-to-update' => [ 'path' => '/update-type-id',
             ['controller' => 'EditBillet', 'method' => 'billetForm']],
 
+        'listing-users' => [ 'path' => '/users',
+            ['controller' => 'users', 'method' => 'usersManager']],
+
     ],
 
     'POST' => [
