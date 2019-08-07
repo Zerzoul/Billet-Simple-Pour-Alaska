@@ -13,11 +13,18 @@ return array( 'GET' =>
             ['controller' => 'authentification', 'method' => 'deconnexion']],
 
         'billets' => [ 'path' => '/billets',
-            ['controller' => 'ListBillet', 'method' => 'billetManager']],
+            ['controller' => 'ListBillet', 'method' => 'listBillet']],
         'billet-type' => [ 'path' => '/billet-type',
-            ['controller' => 'ListBillet', 'method' => 'billetManager']],
+            ['controller' => 'ListBillet', 'method' => 'listBillet']],
         'billet-type-id' => [ 'path' => '/billet-type-id',
-            ['controller' => 'ListBillet', 'method' => 'billetManager']],
+            ['controller' => 'ListBillet', 'method' => 'listBillet']],
+
+        'trash-billets' => [ 'path' => '/trashbillets',
+            ['controller' => 'DeleteBillet', 'method' => 'listTrashBillet']],
+        'trash-billets-type' => [ 'path' => '/trashbillets-type',
+            ['controller' => 'DeleteBillet', 'method' => 'listTrashBillet']],
+        'trash-billets-id' => [ 'path' => '/trashbillets-type-id',
+            ['controller' => 'DeleteBillet', 'method' => 'listTrashBillet']],
 
         'add-billet' => [ 'path' => '/add-billet',
             ['controller' => 'EditBillet', 'method' => 'billetForm']],
@@ -34,11 +41,17 @@ return array( 'GET' =>
     'POST' => [
         'new' => ['path' => 'login',
             ['controller' => 'authentification', 'method' => 'authValidator']],
+
         'typeBillet' => ['path' => 'billets',
-            ['controller' => 'ListBillet', 'method' => 'selectTheType']],
+            ['controller' => 'billet', 'method' => 'selectTheType']],
         'typeBilletId' => ['path' => 'billet-type-id',
-            ['controller' => 'ListBillet', 'method' => 'selectTheType']],
-        
+            ['controller' => 'billet', 'method' => 'selectTheType']],
+
+        'typeTrashBillet' => ['path' => 'trashbillets',
+            ['controller' => 'billet', 'method' => 'selectTheType']],
+        'typeTrashBilletId' => ['path' => 'trashbillets-type-id',
+            ['controller' => 'billet', 'method' => 'selectTheType']],
+
         'create-Billet' => ['path' => 'add-billet',
             ['controller' => 'EditBillet', 'method' => 'checkBillet']],
         'Update-Billet' => ['path' => 'update-type-id',

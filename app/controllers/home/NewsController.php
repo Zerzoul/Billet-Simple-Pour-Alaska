@@ -20,7 +20,6 @@ class NewsController extends \framework\Controller {
         }
     }
     public function newsPost($id){
-
         $news = $this->app->getManager('news');
         $new = $news->getTheNews($id);
         $new;

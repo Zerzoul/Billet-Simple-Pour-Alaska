@@ -36,7 +36,8 @@ class EditBilletController extends BilletController{
         $this->addBilletOnly = false;
         $this->buttonName = 'Modifier';
         $table = $this->selectTable($type);
-        $updateBillet = $this->getTheBillet($table, $id);
+        $isTrashed = 0;
+        $updateBillet = $this->getTheBillet($table, $id, $isTrashed);
         if($updateBillet->isTrashed !== '0'){
             return;
         }

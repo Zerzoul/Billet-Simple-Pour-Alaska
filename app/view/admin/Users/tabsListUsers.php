@@ -1,5 +1,5 @@
 <h5>Liste des utilisateurs</h5>
-<table class="table">
+<table class="table table-hover">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -12,7 +12,7 @@
 
 
     <?php
-    foreach ($users as $user)
+    foreach ($usersCount as $user)
     {
         ?>
 
@@ -23,7 +23,7 @@
             <td> <?php $date = new DateTime($user->date_sign);
                 echo $date->format('d/m/Y'); ?></td>
             <td><?= $user->email ?></td>
-            <td><?= $userCount->userCount ?></td>
+            <td><?= $user->userCount ?></td>
         </tr>
         </tbody>
         <?php

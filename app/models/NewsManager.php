@@ -3,29 +3,37 @@ namespace models;
 
 
 class NewsManager extends \framework\Manager{
-
+    //FRONT
     public function getListNews(){
-        $getNews = $this->pdo->query('SELECT id, title, post, date_create, date_modif FROM newspost WHERE statue ='. parent::PUBLISHED .' ORDER BY id DESC');
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE statue=:statue AND isTrashed=:isTrashed ORDER BY id DESC');
+        $getNews->execute(array(
+            'statue' => parent::PUBLISHED,
+            'isTrashed' => 0));
         $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
         return $dataNews;
     }
     public function getTheNews($id){
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue ='. parent::PUBLISHED );
-        $getNews->execute(array('id' => $id));
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue=:statue' );
+        $getNews->execute(array(
+            'id' => $id,
+            'statue' => parent::PUBLISHED));
         $dataNews = $getNews->fetch(\PDO::FETCH_LAZY);
         return $dataNews;
     }
-
-    public function getListBillet($table){
+    //ADMIN
+    public function getListBillet($table, $isTrashed){
         $getBillets = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM '.$table.' WHERE isTrashed=:isTrashed ');
-        $getBillets->execute(array('isTrashed' => '0'));
+        $getBillets->execute(array('isTrashed' => $isTrashed,));
         $getBillets = $getBillets->fetchAll(\PDO::FETCH_OBJ);
         return $getBillets;
     }
 
-    public function getTheBillet($table, $id){
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue, isTrashed FROM '.$table.' WHERE id=:id ');
-        $getNews->execute(array('id' => $id));
+    public function getTheBillet($table, $id, $isTrashed){
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue, isTrashed FROM '.$table.' WHERE id=:id AND isTrashed=:isTrashed');
+        $getNews->execute(array(
+            'id' => $id,
+            'isTrashed' => $isTrashed
+            ));
         $dataNews = $getNews->fetch(\PDO::FETCH_LAZY);
         return $dataNews;
     }

@@ -12,7 +12,7 @@
                 <div class="dropdown-menu col-sm">
                     <a class="dropdown-item" href="add-billet">Nouveau Billet</a>
                     <a class="dropdown-item" href="billets">Billets</a>
-                    <a class="dropdown-item" href="billet-trash">Corbeille</a>
+                    <a class="dropdown-item" href="trashbillets">Corbeille</a>
                 </div>
         </div>
             <div class="btn-group col-sm pt-2">

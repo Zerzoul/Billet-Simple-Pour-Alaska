@@ -51,7 +51,6 @@ class Route{
                 if(!empty($id[0])){
                     $this->_matchId = intval($id[0]);
                 }
-
             };
         }
         foreach ($urlParse as $params){

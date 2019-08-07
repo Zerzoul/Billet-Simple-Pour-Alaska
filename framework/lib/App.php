@@ -7,7 +7,8 @@ class App{
     private $_db_instance;
     private $_routes;
     private $_formBuilder;
-    private static $instanceController = null;
+    private static $_instanceController = null;
+    private static $_instancePage = null;
 
 
     public static function getInstance(){
@@ -51,10 +52,10 @@ class App{
         $form = $this->initForm();
         require_once $class_path.'.php';
 
-        if(self::$instanceController instanceof $class_name === false){
-            self::$instanceController =  new $class_name(self::getInstance(), $form);
+        if(self::$_instanceController instanceof $class_name === false){
+            self::$_instanceController =  new $class_name(self::getInstance(), $form);
         }
-        return self::$instanceController;
+        return self::$_instanceController;
     }
     public function initRouter($url, $routes){
         $routes = $this->initConfig($routes);
@@ -62,11 +63,13 @@ class App{
         return new Router($url, $this->_routes);
     }
     public function getPage($call){
-
         if(!isset($call)){
             throw new \Exception('No page to build');
         }
-        return new Page($call, self::getInstance());
+        if(is_null(self::$_instancePage)){
+            self::$_instancePage = new Page($call, self::getInstance());
+        }
+        return self::$_instancePage;
     }
 
 
