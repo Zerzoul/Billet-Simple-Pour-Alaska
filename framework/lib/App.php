@@ -10,6 +10,8 @@ class App{
     private static $_instanceController = null;
     private static $_instancePage = null;
 
+    protected $path;
+
 
     public static function getInstance(){
         if(is_null(self::$_instance)){
@@ -44,7 +46,7 @@ class App{
         require_once $class_path.'.php';
         return new $class_name($this->getDb());
     }
-    public function getController($name, $direction){
+    public function getController($name, $direction, $params){
         $class = ucfirst($name).'Controller';
         $direction = strtolower($direction);
         $class_path = 'app/controllers/'.$direction.'/'.$class;
@@ -53,7 +55,7 @@ class App{
         require_once $class_path.'.php';
 
         if(self::$_instanceController instanceof $class_name === false){
-            self::$_instanceController =  new $class_name(self::getInstance(), $form);
+            self::$_instanceController =  new $class_name(self::getInstance(), $form, $params);
         }
         return self::$_instanceController;
     }
@@ -66,6 +68,7 @@ class App{
         if(!isset($call)){
             throw new \Exception('No page to build');
         }
+        $this->path = $call['path'];
         if(is_null(self::$_instancePage)){
             self::$_instancePage = new Page($call, self::getInstance());
         }

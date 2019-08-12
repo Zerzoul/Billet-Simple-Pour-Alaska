@@ -4,16 +4,16 @@ namespace controllers\home;
 class CommentsController extends \framework\Controller {
 
     protected $validator = 'ContentValidator.php';
-    public function getCountCom($id){
+    public function getCountCom(){
 
         $coms = $this->app->getManager('comments');
-        $coms = $coms->countComs($id);
+        $coms = $coms->countComs($this->id);
         return $coms;
     }
-    public function getComs($id){
+    public function getComs(){
         //TODO: fetch tous les commentaires liées à l'id du post
         $coms = $this->app->getManager('comments');
-        $coms = $coms->getComments($id);
+        $coms = $coms->getComments($this->id);
 
 
         return $coms;
@@ -29,7 +29,7 @@ class CommentsController extends \framework\Controller {
         $email = $validator->emailContent($_POST['email']);
         $comments = $validator->commentsContent($_POST['postComment']);
 
-        $users = $this->app->getController('users', 'home');
+        $users = $this->app->getController('users', 'home', null);
         $author = $users->checkEmail($email);
 
         $coms = $this->app->getManager('comments');

@@ -8,7 +8,7 @@ class BilletController extends \framework\Controller{
     protected $type;
     protected $id;
 
-    const LISTBILLETPATH = 'app/view/admin/Billets/billets.php';
+    const LIST_BILLET_PATH = 'app/view/admin/Billets/billets.php';
 
     protected function getTheStatue($statue){
         switch($statue){
@@ -25,27 +25,6 @@ class BilletController extends \framework\Controller{
                 return null;
         }
     }
-
-//    public function billetManager($type = null, $id = null, $isTrashed){
-//
-//        if(is_null($type)){
-//            $type = 'news';
-//        }
-//        $typeSelected = $type;
-//
-//        if(!is_null($type)){
-//            $table = $this->selectTable($type);
-//            $listBillet = $this->displayAllBillet($table,$isTrashed);
-//
-//            if(!is_null($id)){
-//                $actionBillet = $this->getTheBillet($table, $id, $isTrashed);
-//                $statue = $this->getTheStatue($actionBillet->statue);
-//            }
-//        }
-//        $isTypeNull = $this->isTypeNull;
-//        $isIdNull = $this->isIdNull;
-//    }
-
 
     public function selectTable($type){
         return $type.'post';
@@ -83,14 +62,14 @@ class BilletController extends \framework\Controller{
         }
     }
 
-    public function selectTheType($path){
+    public function selectTheType(){
         if($_POST['type'] === 'Type'){
-            header('Location: '.$path);
+            header('Location:'.$this->path);
         }
         elseif($_POST['type'] !== $this->type){
             $this->type = $_POST['type'];
         }
-        header('Location: '.$path.'-'.$this->type);
+        header('Location: '.$this->path.'-'.$this->type);
     }
 
 }

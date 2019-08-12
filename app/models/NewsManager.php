@@ -71,4 +71,12 @@ class NewsManager extends \framework\Manager{
         $deleteThisBillet = $deleteThisBillet->execute(array('id' => $id));
         return $deleteThisBillet;
     }
+    public function restoreThisBillet($table, $id){
+        $trashThisBillet = $this->pdo->prepare('UPDATE '.$table.' SET isTrashed = :isTrashed WHERE id = :id');
+        $trashThisBillet = $trashThisBillet->execute(array(
+            'isTrashed' => '0',
+            'id' => $id
+        ));
+        return $trashThisBillet;
+    }
 }

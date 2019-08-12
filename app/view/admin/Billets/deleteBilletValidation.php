@@ -14,7 +14,7 @@
     <div class="row mt-5 mx-1">
         <form action="" method="post">
             <input type="submit" name="validationDeleteBillet" value="Annuler" class="btn btn-warning mr-5" />
-            <input type="submit" name="validationDeleteBillet" value="Supprimer" class="btn btn-danger" />
+            <input type="submit" name="validationDeleteBillet" value="<?= $action ?>" class="btn btn-danger" />
         </form>
 
     </div>

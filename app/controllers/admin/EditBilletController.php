@@ -14,7 +14,9 @@ class EditBilletController extends BilletController{
     protected $updatePost = null;
     protected $updateDate = null;
 
-    public function billetForm($type = null, $id = null){
+    public function billetForm(){
+        $type = $this->type;
+        $id = $this->id;
 
         if(!is_null($type) && !is_null($id)){
             $this->loadForUpdateBillet($type,$id);

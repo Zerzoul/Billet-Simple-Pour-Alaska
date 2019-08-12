@@ -33,6 +33,9 @@ return array( 'GET' =>
         'billet-to-update' => [ 'path' => '/update-type-id',
             ['controller' => 'EditBillet', 'method' => 'billetForm']],
 
+        'billet-to-restore' => [ 'path' => '/restore-type-id',
+            ['controller' => 'DeleteBillet', 'method' => 'deleteBilletValidation']],
+
         'listing-users' => [ 'path' => '/users',
             ['controller' => 'users', 'method' => 'usersManager']],
 
@@ -58,6 +61,8 @@ return array( 'GET' =>
             ['controller' => 'EditBillet', 'method' => 'checkBillet']],
 
         'delete-billet' => [ 'path' => '/delete-type-id',
+            ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
+        'restore-billet' => [ 'path' => '/restore-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
     ]
 );

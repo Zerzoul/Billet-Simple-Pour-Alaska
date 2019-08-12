@@ -11,20 +11,20 @@
 
 
     <?php
-    foreach ($listBillet as $new)
+    foreach ($listBillet as $billet)
     {
         ?>
 
         <tbody>
         <tr>
-            <th scope="row"><?= $new->id ?></th>
-            <td><?php $date = new DateTime($new->date_create);
+            <th scope="row"><?= $billet->id ?></th>
+            <td><?php $date = new DateTime($billet->date_create);
                 echo $date->format('d/m/Y à H:i'); ?></td>
-            <td><?= $new->title ?></td>
+            <td><?= $billet->title ?></td>
             <td>
-                <a href="billet-<?= $type ?>-<?= $new->id ?>" class="text-light">
+                <a href="<?= $path ?>-<?= $type ?>-<?= $billet->id ?>" class="text-light">
                     <button class="btn btn-primary">
-                       Edit
+                       Voir
                     </button>
                 </a>
             </td>
