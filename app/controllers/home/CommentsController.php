@@ -5,16 +5,16 @@ class CommentsController extends \framework\Controller {
 
     protected $validator = 'ContentValidator.php';
     public function getCountCom(){
-
+        $table = $this->selectTableComments(null);
         $coms = $this->app->getManager('comments');
-        $coms = $coms->countComs($this->id);
+        $coms = $coms->countComs($table, $this->id);
         return $coms;
     }
     public function getComs(){
         //TODO: fetch tous les commentaires liées à l'id du post
+        $table = $this->selectTableComments(null);
         $coms = $this->app->getManager('comments');
-        $coms = $coms->getComments($this->id);
-
+        $coms = $coms->getComments($table, $this->id);
 
         return $coms;
 //        foreach ($coms as $com){

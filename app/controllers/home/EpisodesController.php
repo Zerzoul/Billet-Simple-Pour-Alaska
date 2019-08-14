@@ -6,10 +6,31 @@ class EpisodesController extends \framework\Controller {
 
 
     public function listChapter(){
+        $table = $this->selectTable($this->path);
+        $episode = $this->app->getManager('news');
+        $episodes = $episode->getListNews($table, 'ASC');
 
-            require '/app/view/home/Episodes/episodes.php';
+        require 'app/view/home/Episodes/episodes.php';
+    }
+    public function chapter(){
+        $table = $this->selectTable('episodes');
+        $tableComs = $this->selectTableComments('episodes');
 
+        $chapter = $this->app->getManager('news');
+        $chapter = $chapter->getTheNews($table, $this->id);
 
+        $news = $this->app->getManager('news');
+        $new = $news->getTheNews($table, $this->id);
+        $new;
+        $coms = $this->app->getController('comments', 'home', null);
+        $comCount = $coms->getCountCom($this->path, $this->id);
+        $comCount;
+        $coms = $this->app->getManager('comments');
+        $coms = $coms->getComments($tableComs, $this->id);
+
+        $coms;
+
+        require 'app/view/home/Episodes/episode.php';
     }
 
 }

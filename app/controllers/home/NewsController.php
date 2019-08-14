@@ -5,14 +5,17 @@ class NewsController extends \framework\Controller {
 
 
     public function listNewsPost(){
+        $table = $this->selectTable($this->path);
 
         $news = $this->app->getManager('news');
-        $news = $news->getListNews();
+        $news = $news->getListNews($table, 'DESC');
+
 
         foreach($news as $new){
-
+            $tableComs = $this->selectTableComments($this->path);
             $coms = $this->app->getController('comments', 'home', null);
-            $coms = $coms->getCountCom($new->id);
+            $coms = $coms->getCountCom($tableComs, $new->id);
+
 
             $coms;
             $new;
@@ -20,14 +23,18 @@ class NewsController extends \framework\Controller {
         }
     }
     public function newsPost(){
+
+        $table = $this->selectTable($this->path);
+        $tableComs = $this->selectTableComments($this->path);
+
         $news = $this->app->getManager('news');
-        $new = $news->getTheNews($this->id);
+        $new = $news->getTheNews($table, $this->id);
         $new;
         $coms = $this->app->getController('comments', 'home', null);
-        $comCount = $coms->getCountCom($this->id);
+        $comCount = $coms->getCountCom($this->path, $this->id);
         $comCount;
         $coms = $this->app->getManager('comments');
-        $coms = $coms->getComments($this->id);
+        $coms = $coms->getComments($tableComs, $this->id);
 
         $coms;
         require self::NEW_PATH;

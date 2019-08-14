@@ -26,10 +26,6 @@ class BilletController extends \framework\Controller{
         }
     }
 
-    public function selectTable($type){
-        return $type.'post';
-    }
-
     public function displayAllBillet($table, $isTrashed){
         $this->isTypeNull = false;
         $news = $this->app->getManager('news');

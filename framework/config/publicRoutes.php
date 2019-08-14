@@ -3,13 +3,18 @@
 return array( 'GET' =>
     ['news' => [ 'path' => '/',
         ['controller' => 'news', 'method' => 'listNewsPost']],
-    'new' => ['path' => '/new-id',
+    'new' => ['path' => '/news-id',
         ['controller' => 'news', 'method' => 'newsPost'],
         ['controller' => 'comments', 'method' => 'getComs']],
+
     'episodes' => ['path' => '/episodes',
         ['controller' => 'episodes', 'method' => 'listChapter']],
-    'chapter' => ['path' => '/chapter-id',
-        ['controller' => 'chapter', 'method' => '']]],
+    'chapter' => ['path' => '/chapitre-id',
+        ['controller' => 'episodes', 'method' => 'chapter']],
+        'about' => ['path' => '/about',
+            ['controller' => 'about', 'method' => 'getAboutPage']],
+    ],
+
 
     'POST' => [
         'new' => ['path' => '/new-id',

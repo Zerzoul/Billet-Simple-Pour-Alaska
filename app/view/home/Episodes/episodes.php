@@ -20,19 +20,27 @@
     <div class="undertitle_content">
         <h2>Episodes</h2>
     </div>
+    <?php
+        foreach ($episodes as $episode) {
 
-    <div class="episode_table_content undertitle_content">
-        <div>
-            <h4>Episode 1 - l'aventure commence</h3>
-            <p>Publié le <span class="date">00/00/0000</span></p>
-        </div>
-        <div class="resume">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et augue a libero finibus ultricies. Sed ligula elit, imperdiet in suscipit eget, varius sit amet magna. Fusce commodo dui vel turpis congue</p>
-        </div>
-        <div class="btn_elmt">
-            <a href="#"><p>Lire</p></a>
-        </div>
-    </div>
-    
+            ?>
+            <div class="episode_table_content undertitle_content">
+                <div>
+                    <h4>Episode <?= $episode->id ?> - <?= $episode->title ?></h4>
+                    <p>Publié le <span class="date"><?php
+                            $date = new DateTime($episode->date_create);
+                            echo $date->format('d/m/Y');
+                            ?></span></p>
+                </div>
+                <div class="resume">
+                    <p><?= (substr(strip_tags($episode->post), 0, 100)) ?></p>
+                </div>
+                <div class="btn_elmt">
+                    <a href="/Billet-Simple-Pour-Alaska/chapitre-<?= $episode->id ?>"><p>Lire</p></a>
+                </div>
+            </div>
+            <?php
+        }
+    ?>
 
 </div>

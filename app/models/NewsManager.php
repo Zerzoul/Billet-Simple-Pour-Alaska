@@ -4,16 +4,16 @@ namespace models;
 
 class NewsManager extends \framework\Manager{
     //FRONT
-    public function getListNews(){
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE statue=:statue AND isTrashed=:isTrashed ORDER BY id DESC');
+    public function getListNews($table, $order){
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM '.$table.' WHERE statue=:statue AND isTrashed=:isTrashed ORDER BY id '.$order);
         $getNews->execute(array(
             'statue' => parent::PUBLISHED,
             'isTrashed' => 0));
         $dataNews = $getNews->fetchAll(\PDO::FETCH_OBJ);
         return $dataNews;
     }
-    public function getTheNews($id){
-        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM newspost WHERE id=:id AND statue=:statue' );
+    public function getTheNews($table, $id){
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM '.$table.' WHERE id=:id AND statue=:statue' );
         $getNews->execute(array(
             'id' => $id,
             'statue' => parent::PUBLISHED));

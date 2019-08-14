@@ -6,10 +6,7 @@ class AboutController extends \framework\Controller {
 
 
     public function getAboutPage(){
-
-        require '/app/view/home/About/about.php';
-
-
+        require 'app/view/home/About/about.php';
     }
 
 }

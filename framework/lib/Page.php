@@ -37,8 +37,9 @@ class Page
     }
 
     public function checkId($id){
+        var_dump($_SESSION['id']);
         if(!is_null($id)){
-            if(is_int($id)){
+            if(is_int($id) && $_SESSION['id'] == $id){
                 return true;
             }
             return false;

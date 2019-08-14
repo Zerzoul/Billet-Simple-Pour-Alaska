@@ -40,8 +40,6 @@ class Route{
         }
 
         $this->splitParams($urlParse);
-
-
         return true;
     }
     public function splitParams($urlParse){

@@ -1,38 +1,76 @@
-<div class="body_content">
-    <div class="synopsis_content">
-        <div class="synopsis_content_flex">
-            <img src="public/images/couverture.jpg" alt="converture Billet Simple Pour l'Alaska">
-        </div>
-        <div class="undertitle_content">
-            <h2>Synopsis</h2>
-        </div>
-        <div class="block">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et augue a libero finibus ultricies. Sed ligula elit, imperdiet in suscipit eget, varius sit amet magna. Fusce commodo dui vel turpis congue, sit amet sollicitudin magna volutpat. Phasellus vel nisi et magna dignissim lacinia consectetur ut nisi. Phasellus sed enim ut ligula cursus feugiat ac ut ipsum. Cras eget lorem efficitur, consequat metus sed, lobortis nulla. Aenean non mi tempus orci dignissim placerat. In gravida nibh a ipsum finibus feugiat. Phasellus tellus ipsum, posuere ut enim at, tempus efficitur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin magna mauris, posuere blandit tortor et, blandit sollicitudin leo. Ut nec ultricies nunc. Fusce et ultrices turpis, ut vulputate neque. Sed fermentum, lorem id porta condimentum, erat dui ultricies dolor, et consequat erat orci in mauris.</p>
-        </div>
-        <div class="synopsis_content_flex btn_synopsis_elmnt">
-            <a href=""><h2>Commencer la lecture</h2></a>
-        </div>
-    </div>
 
+<div class="body_content">
+    <div class="title_content">
+        <h2><?= $chapter->title ?></h2>
+    </div>
+    <div class="block">
+        <p><?= $chapter->post ?></p>
+    </div>
+    <div class="news_date">
+        <p>Publié le
+            <span class="date">
+                <?php
+                $date = new DateTime($chapter->date_create);
+                echo $date->format('d/m/Y');
+                ?>
+            </span>
+        </p>
+    </div>
 </div>
-<div class="body_content">
 
+<div class="comment_content">
     <div class="undertitle_content">
-        <h2>Episodes</h2>
+        <h2>Laisser un commentaire ?</h2>
+    </div>
+    <div class="form_flex">
+        <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="/Billet-Simple-Pour-Alaska/connect">Je m'inscris !</a></p>
+    </div>
+    <div class="comment_form">
+        <form action="" method="POST">
+            <div class="form_content">
+                <label for="">E-mail</label>
+                <input type="text" class="input_size" name="email" required>
+            </div>
+
+            <div class="form_content">
+                <label for="">Commentaire</label>
+                <textarea name="postComment" id="commentPost" class="textarea_size" maxlength="500" required></textarea>
+            </div>
+            <div class="form_flex">
+                <button type="submit">Envoyer</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="comment_content">
+    <div class="undertitle_content news_flex">
+        <h2>Les commentaires</h2>
+        <p><?= $comCount->counts ?> Commentaire(s)</p>
     </div>
 
-    <div class="episode_table_content undertitle_content">
-        <div>
-            <h4>Episode 1 - l'aventure commence</h3>
-            <p>Publié le <span class="date">00/00/0000</span></p>
-        </div>
-        <div class="resume">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et augue a libero finibus ultricies. Sed ligula elit, imperdiet in suscipit eget, varius sit amet magna. Fusce commodo dui vel turpis congue</p>
-        </div>
-        <div class="btn_elmt">
-            <a href="#"><p>Lire</p></a>
-        </div>
-    </div>
-    
+    <?php
+    foreach($coms as $com){
 
+        ?>
+        <div class="comment_body_content">
+            <div class="title_content news_flex">
+                <h4><?=$com->author?></h4>
+                <p>Publié le
+                    <span class="date">
+                        <?php
+                        $date = new DateTime($com->date);
+                        echo $date->format('d/m/Y à H:i');
+                        ?>
+                    </span>
+                </p>
+            </div>
+            <div class="block">
+                <p><?=$com->comments?></p>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
 </div>
