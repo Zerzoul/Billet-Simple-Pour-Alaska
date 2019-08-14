@@ -27,7 +27,15 @@ class NewsManager extends \framework\Manager{
         $getBillets = $getBillets->fetchAll(\PDO::FETCH_OBJ);
         return $getBillets;
     }
-
+    public function getTheBilletWithoutTrash($table, $id)
+    {
+        $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue, isTrashed FROM ' . $table . ' WHERE id=:id ');
+        $getNews->execute(array(
+            'id' => $id
+        ));
+        $dataNews = $getNews->fetch(\PDO::FETCH_LAZY);
+        return $dataNews;
+    }
     public function getTheBillet($table, $id, $isTrashed){
         $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue, isTrashed FROM '.$table.' WHERE id=:id AND isTrashed=:isTrashed');
         $getNews->execute(array(

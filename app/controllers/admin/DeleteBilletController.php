@@ -11,7 +11,7 @@ class DeleteBilletController extends BilletController{
         $type = $this->type;
         $id = $this->id;
         $path = $this->path;
-
+        $titleList = 'Corbeille';
         if(is_null($type)){
             $type = 'news';
         }
@@ -32,9 +32,9 @@ class DeleteBilletController extends BilletController{
         $bouton1 = 'Restorer';
         $linkAction1 = "restore";
         $bouton2 = 'Supprimer';
-        $linkAction2 = "delete";
+        $linkAction2 = "trashbillettodelete";
 
-        require 'app/view/admin/Billets/billets.php';
+        require parent::LIST_BILLET_PATH;
     }
 
 
@@ -44,17 +44,19 @@ class DeleteBilletController extends BilletController{
 
         $table = $this->selectTable($type);
         $news = $this->app->getManager('news');
-        $isTrashed = $news->getTheBillet($table, $id, null);
+        $isTrashed = $news->getTheBilletWithoutTrash($table, $id);
 
-        if($this->path === 'delete'){
-            if($isTrashed->isTrashed !== 0){
+        if($this->path === 'billettodelete' || $this->path === 'trashbillettodelete'){
+            if($isTrashed->isTrashed !== '0'){
                 $messageToValid = 'de supprimer définitivement :';
             } else {
                 $messageToValid = 'de mettre à la corbeille :';
             }
             $action = 'Supprimer';
+            $deleteComs = 'Et de supprimer les commentaires liés à celui-ci.';
         } else {
             $messageToValid = 'de restaurer :';
+            $deleteComs = '';
             $action = 'Restaurer';
         }
         if($type === 'news'){
@@ -63,8 +65,7 @@ class DeleteBilletController extends BilletController{
             $typeToDefine = 'L\' '.ucfirst($type);
         }
         $billetToDelete = $typeToDefine.' N° '.$id.' <span class="font-italic">"'.$isTrashed->title.'"</span>.';
-        $id;
-        $type;
+
         require 'app/view/admin/Billets/deleteBilletValidation.php';
     }
     public function deleteBillet(){
@@ -72,21 +73,31 @@ class DeleteBilletController extends BilletController{
         $id = $this->id;
 
         if($_POST['validationDeleteBillet'] == 'Annuler'){
-            header('Location: billets');
-            return;
+            $this->cancelDeleteAction();
+            exit();
         }
         $table = $this->selectTable($type);
         $news = $this->app->getManager('news');
-        $isTrashed = $news->getTheBillet($table, $id);
+        $isTrashed = $news->getTheBilletWithoutTrash($table, $id);
 
-        if($isTrashed->isTrashed !== 0){
+        if($isTrashed->isTrashed !== '0'){
+            if($_POST['validationDeleteBillet'] == 'Restaurer'){
+                $news->restoreThisBillet($table, $id);
+                header('Location: billets');
+                exit();
+            }
             $news->deleteThisBillet($table, $id);
-        } elseif($_POST['validationDeleteBillet'] == 'Restaurer'){
-            $news->restorThisBillet($table, $id);
+            header('Location: trashbillettodelete');
+            exit();
+        } else {
+            $news->trashThisBillet($table, $id);
+            header('Location: billets');
+            exit();
         }
-
-        $news->trashThisBillet($table, $id);
-        header('Location: billets');
+    }
+    public function cancelDeleteAction(){
+        $this->path === 'billettodelete' ? $path = 'billets' : $path = 'trashbillets' ;
+        header('Location:'.$path);
     }
 
 }

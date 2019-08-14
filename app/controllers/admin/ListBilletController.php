@@ -12,11 +12,11 @@ class ListBilletController extends BilletController
         $type = $this->type;
         $id = $this->id;
         $path = $this->path;
-
+        $titleList = 'Listes des billets';
         if(is_null($type)){
             $type = 'news';
         }
-//
+
         $typeSelected = $type;
         $isTrashed = 0;
 
@@ -34,9 +34,9 @@ class ListBilletController extends BilletController
         $bouton1 = 'Modification';
         $linkAction1 = "update";
         $bouton2 = 'Supprimer';
-        $linkAction2 = "delete";
+        $linkAction2 = "billettodelete";
 
-        require 'app/view/admin/Billets/billets.php';
+        require parent::LIST_BILLET_PATH;
     }
 
 

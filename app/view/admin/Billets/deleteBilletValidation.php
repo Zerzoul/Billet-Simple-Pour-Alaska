@@ -3,7 +3,8 @@
     <div class="py-3">
         <div>
             <p >
-                Vous êtes sur le point <?= $messageToValid ?>
+                Vous êtes sur le point <?= $messageToValid ?> <br />
+                <?= $deleteComs ?>
             </p>
             <p class="font-weight-bold">
                 <?= $billetToDelete ?>

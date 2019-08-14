@@ -49,7 +49,9 @@ class EditBilletController extends BilletController{
         $this->updatePost = $updateBillet->post;
     }
 
-    public function checkBillet($type = null, $id = null){
+    public function checkBillet(){
+        $type = $this->type;
+        $id = $this->id;
         if(!is_null($type) && !is_null($id)){
             $this->addBilletOnly = false;
             $this->updateDate = date("Y-m-d H:i:s");

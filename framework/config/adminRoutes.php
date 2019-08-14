@@ -28,7 +28,9 @@ return array( 'GET' =>
 
         'add-billet' => [ 'path' => '/add-billet',
             ['controller' => 'EditBillet', 'method' => 'billetForm']],
-        'billet-to-delete' => [ 'path' => '/delete-type-id',
+        'billet-to-delete-from-billet' => [ 'path' => '/billettodelete-type-id',
+            ['controller' => 'DeleteBillet', 'method' => 'deleteBilletValidation']],
+        'billet-to-delete-from-trashbillet' => [ 'path' => '/trashbillettodelete-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBilletValidation']],
         'billet-to-update' => [ 'path' => '/update-type-id',
             ['controller' => 'EditBillet', 'method' => 'billetForm']],
@@ -60,7 +62,9 @@ return array( 'GET' =>
         'Update-Billet' => ['path' => 'update-type-id',
             ['controller' => 'EditBillet', 'method' => 'checkBillet']],
 
-        'delete-billet' => [ 'path' => '/delete-type-id',
+        'delete-billet-to-billet' => [ 'path' => '/billettodelete-type-id',
+            ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
+        'delete-billet-to-trashbillet' => [ 'path' => '/trashbillettodelete-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
         'restore-billet' => [ 'path' => '/restore-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],

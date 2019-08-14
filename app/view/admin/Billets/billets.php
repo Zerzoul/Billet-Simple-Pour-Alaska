@@ -1,5 +1,8 @@
 <div class="container-fluid px-2">
-    <h3>Liste des billets</h3>
+
+    <div>
+        <h3><?= $titleList ?></h3>
+    </div>
 
         <?php include 'filterTypeBillet.php'; ?>
         <div class="row mt-3">
