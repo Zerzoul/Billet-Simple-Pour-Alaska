@@ -52,7 +52,7 @@ class Route{
             };
         }
         foreach ($urlParse as $params){
-            if(preg_match('/news|episodes/', $params, $type)){
+            if(preg_match('/news|episodes|chapitre/', $params, $type)){
                 if(!empty($type[0])){
                     $this->_matchType = htmlspecialchars($type[0]);
                 }

@@ -10,13 +10,10 @@ class NewsController extends \framework\Controller {
         $news = $this->app->getManager('news');
         $news = $news->getListNews($table, 'DESC');
 
-
         foreach($news as $new){
             $tableComs = $this->selectTableComments($this->path);
             $coms = $this->app->getController('comments', 'home', null);
             $coms = $coms->getCountCom($tableComs, $new->id);
-
-
             $coms;
             $new;
             require self::NEWS_PATH;
@@ -31,7 +28,7 @@ class NewsController extends \framework\Controller {
         $new = $news->getTheNews($table, $this->id);
         $new;
         $coms = $this->app->getController('comments', 'home', null);
-        $comCount = $coms->getCountCom($this->path, $this->id);
+        $comCount = $coms->getCountCom($tableComs, $this->id);
         $comCount;
         $coms = $this->app->getManager('comments');
         $coms = $coms->getComments($tableComs, $this->id);

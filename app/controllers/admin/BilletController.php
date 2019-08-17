@@ -32,6 +32,11 @@ class BilletController extends \framework\Controller{
         return $news->getListBillet($table, $isTrashed);
 
     }
+    public function displayAllComments($table){
+        $this->isTypeNull = false;
+        $news = $this->app->getManager('comments');
+        return $news->getAllComments($table);
+    }
     public function getTheBillet($table, $id, $isTrashed){
         $news = $this->app->getManager('news');
         $this->isIdNull = false;
@@ -65,6 +70,7 @@ class BilletController extends \framework\Controller{
         elseif($_POST['type'] !== $this->type){
             $this->type = $_POST['type'];
         }
+        var_dump($this->path);
         header('Location: '.$this->path.'-'.$this->type);
     }
 

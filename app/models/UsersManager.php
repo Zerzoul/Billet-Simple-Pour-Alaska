@@ -12,11 +12,11 @@ class UsersManager extends Manager
         $users = $getUsers->fetchAll(\PDO::FETCH_OBJ);
         return $users;
     }
-//    public function getUsers(){
-//        $getUsers = $this->pdo->query('SELECT id, pseudo, date_sign,email FROM user ');
-//        $users = $getUsers->fetchAll(\PDO::FETCH_OBJ);
-//        return $users;
-//    }
+    public function getUsers(){
+        $getUsers = $this->pdo->query('SELECT id, pseudo, date_sign,email FROM user ');
+        $users = $getUsers->fetchAll(\PDO::FETCH_OBJ);
+        return $users;
+    }
     public function getAdminUser(){
         $getAdminUsers = $this->pdo->query('SELECT id, username, password, statue FROM adminmanagerusers ');
         $adminUsers = $getAdminUsers->fetchAll(\PDO::FETCH_OBJ);

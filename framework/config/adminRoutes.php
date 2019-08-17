@@ -38,6 +38,9 @@ return array( 'GET' =>
         'billet-to-restore' => [ 'path' => '/restore-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBilletValidation']],
 
+        'comments' => [ 'path' => '/comments',
+            ['controller' => 'comments', 'method' => 'listComments']],
+
         'listing-users' => [ 'path' => '/users',
             ['controller' => 'users', 'method' => 'usersManager']],
 
@@ -55,6 +58,11 @@ return array( 'GET' =>
         'typeTrashBillet' => ['path' => 'trashbillets',
             ['controller' => 'billet', 'method' => 'selectTheType']],
         'typeTrashBilletId' => ['path' => 'trashbillets-type-id',
+            ['controller' => 'billet', 'method' => 'selectTheType']],
+
+        'typeCom' => ['path' => 'comments',
+            ['controller' => 'billet', 'method' => 'selectTheType']],
+        'typeComId' => ['path' => 'comments-type-id',
             ['controller' => 'billet', 'method' => 'selectTheType']],
 
         'create-Billet' => ['path' => 'add-billet',

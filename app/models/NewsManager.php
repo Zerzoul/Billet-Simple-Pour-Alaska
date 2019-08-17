@@ -68,7 +68,7 @@ class NewsManager extends \framework\Manager{
     public function trashThisBillet($table, $id){
         $trashThisBillet = $this->pdo->prepare('UPDATE '.$table.' SET isTrashed = :isTrashed WHERE id = :id');
         $trashThisBillet = $trashThisBillet->execute(array(
-            'isTrashed' => '1',
+            'isTrashed' => 1,
             'id' => $id
         ));
         return $trashThisBillet;
@@ -82,7 +82,7 @@ class NewsManager extends \framework\Manager{
     public function restoreThisBillet($table, $id){
         $trashThisBillet = $this->pdo->prepare('UPDATE '.$table.' SET isTrashed = :isTrashed WHERE id = :id');
         $trashThisBillet = $trashThisBillet->execute(array(
-            'isTrashed' => '0',
+            'isTrashed' => 0,
             'id' => $id
         ));
         return $trashThisBillet;

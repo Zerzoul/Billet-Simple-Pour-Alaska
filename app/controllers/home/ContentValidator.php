@@ -9,13 +9,11 @@ class ContentValidator
     public function emailContent($email){
         if(!isset($email)){
             throw new \Exception("We need an email to published your comment");
-            return false;
         }
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             throw new \Exception("This is not a valid email adresse");
-            return false;
         }
-        return $email;
+        return htmlspecialchars($email);
     }
 
     public function commentsContent($comments){

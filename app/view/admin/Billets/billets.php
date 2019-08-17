@@ -7,6 +7,6 @@
         <?php include 'filterTypeBillet.php'; ?>
         <div class="row mt-3">
 
-            <?php include 'editBillet.php'; ?>
+            <?php include 'manageBillet.php'; ?>
         </div>
 </div>

@@ -18,12 +18,9 @@ class EpisodesController extends \framework\Controller {
 
         $chapter = $this->app->getManager('news');
         $chapter = $chapter->getTheNews($table, $this->id);
-
-        $news = $this->app->getManager('news');
-        $new = $news->getTheNews($table, $this->id);
-        $new;
+        $chapter;
         $coms = $this->app->getController('comments', 'home', null);
-        $comCount = $coms->getCountCom($this->path, $this->id);
+        $comCount = $coms->getCountCom($tableComs, $this->id);
         $comCount;
         $coms = $this->app->getManager('comments');
         $coms = $coms->getComments($tableComs, $this->id);

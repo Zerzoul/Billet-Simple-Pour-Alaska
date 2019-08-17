@@ -9,6 +9,7 @@ class App{
     private $_formBuilder;
     private static $_instanceController = null;
     private static $_instancePage = null;
+    private static $_router = null;
 
     protected $path;
 
@@ -62,7 +63,10 @@ class App{
     public function initRouter($url, $routes){
         $routes = $this->initConfig($routes);
         $this->_routes = $routes->getAll();
-        return new Router($url, $this->_routes);
+        if(is_null(self::$_router )){
+            self::$_router = new Router($url, $this->_routes);
+        }
+        return self::$_router;
     }
     public function getPage($call){
         if(!isset($call)){

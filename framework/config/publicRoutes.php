@@ -4,9 +4,7 @@ return array( 'GET' =>
     ['news' => [ 'path' => '/',
         ['controller' => 'news', 'method' => 'listNewsPost']],
     'new' => ['path' => '/news-id',
-        ['controller' => 'news', 'method' => 'newsPost'],
-        ['controller' => 'comments', 'method' => 'getComs']],
-
+        ['controller' => 'news', 'method' => 'newsPost']],
     'episodes' => ['path' => '/episodes',
         ['controller' => 'episodes', 'method' => 'listChapter']],
     'chapter' => ['path' => '/chapitre-id',
@@ -17,7 +15,11 @@ return array( 'GET' =>
 
 
     'POST' => [
-        'new' => ['path' => '/new-id',
+        'report' => ['path' => '/news-id',
+            ['controller' => 'comments', 'method' => 'report']],
+        'addcomFromNews' => ['path' => '/addcoms-type-id',
+            ['controller' => 'comments', 'method' => 'addComment']],
+        'addcomFromEpisodes' => ['path' => '/addcoms-type-id',
             ['controller' => 'comments', 'method' => 'addComment']],
     ]
 );

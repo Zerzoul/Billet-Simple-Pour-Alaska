@@ -4,6 +4,12 @@ use \framework\Manager;
 
 class CommentsManager extends Manager{
 
+    public function getAllComments($table){
+        $getComs = $this->pdo->query('SELECT id, news_id, author, comments, date FROM '.$table);
+        $dataComs = $getComs->fetchAll(\PDO::FETCH_OBJ);
+        return $dataComs;
+    }
+
     public function getComments($table, $id){
         $getComs = $this->pdo->prepare('SELECT id, news_id, author, comments, date FROM '.$table.' WHERE news_id = :news_id AND statue = '.parent::COM_VALID);
         $getComs->execute(array('news_id' => $id));
@@ -22,9 +28,17 @@ class CommentsManager extends Manager{
             'news_id' => $id,
             'author' => $author,
             'comments' => $comments,
-            'statue' => parent::COM_IGNORE,
+            'statue' => parent::COM_VALID,
         ));
         return $addComs;
+    }
+    public function reportCom($table, $id, $report){
+        $reportUpdate = $this->pdo->prepare('UPDATE '.$table.' SET reported = :reported WHERE id = :id');
+        $reportUpdate = $reportUpdate->execute(array(
+           'reported' => $report,
+           'id' => $id
+        ));
+        return $reportUpdate;
     }
     
 }

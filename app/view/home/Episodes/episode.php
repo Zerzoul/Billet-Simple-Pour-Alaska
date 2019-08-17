@@ -1,6 +1,7 @@
 
 <div class="body_content">
     <div class="title_content">
+        <h4>Chapitre <?= $chapter->id ?></h4>
         <h2><?= $chapter->title ?></h2>
     </div>
     <div class="block">
@@ -26,7 +27,7 @@
         <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="/Billet-Simple-Pour-Alaska/connect">Je m'inscris !</a></p>
     </div>
     <div class="comment_form">
-        <form action="" method="POST">
+        <form action="addcoms-chapitre-<?= $chapter->id ?>" method="POST">
             <div class="form_content">
                 <label for="">E-mail</label>
                 <input type="text" class="input_size" name="email" required>
@@ -69,6 +70,9 @@
             <div class="block">
                 <p><?=$com->comments?></p>
             </div>
+            <form action="" method="post">
+                <button class="date" type="submit" name="idCom" value="<?= $com->id ?>">Signaler</button>
+            </form>
         </div>
         <?php
     }

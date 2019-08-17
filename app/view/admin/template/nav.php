@@ -21,7 +21,6 @@
                 </button>
                 <div class="dropdown-menu col-sm">
                     <a class="dropdown-item" href="comments">Commentaires</a>
-                    <a class="dropdown-item" href="comment-trash">Corbeille</a>
                 </div>
             </div>
             <div class="btn-group col-sm pt-2">
