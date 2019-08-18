@@ -13,7 +13,7 @@
         </div>
 
         <div class="block">
-            <p><?= $new->post ?></p>
+            <p><?= substr(strip_tags($new->post), 0, 255) ?>(...)</p>
         </div>
         <div class="news_infos_elmt news_flex">
             <p>

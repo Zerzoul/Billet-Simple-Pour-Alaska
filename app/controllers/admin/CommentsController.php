@@ -27,41 +27,12 @@ class CommentsController extends BilletController {
                 $actionCom = $this->displayComment($tableCom, $tablePost, $id);
             }
         }
-
         $isTypeNull = $this->isTypeNull;
         $isIdNull = $this->isIdNull;
 
         require 'app/view/admin/Comments/comments.php';
     }
-    public function statueReport($listCom){
-        $reported = $listCom->reported;
-        $statue = $listCom->statue;
-        $badgeColorDefine = $this->reportDefine($statue, $reported);
 
-        $reported === '1' ? $reportTxt = "Signalé" : $reportTxt = $this->getTheStatue($listCom->statue);
-
-        return '<div class="badge badge-pill '.$badgeColorDefine.'">'.$reportTxt.'</div>';
-    }
-    public function reportDefine($statue, $reported){
-        $Badgepublier = 'badge-success';
-        $Badgereported = 'badge-warning';
-        $BadgenewCom = 'badge-primary';
-        $Badgeignored = 'badge-danger';
-        $finalClass = null;
-        switch($statue){
-            case 4:
-                $finalClass =  $Badgepublier;
-                break;
-            case 5:
-                $finalClass = $Badgeignored;
-                break;
-            case 6:
-                $finalClass = $BadgenewCom;
-                break;
-        }
-
-        return $reported === '1' ? $finalClass = $Badgereported : $finalClass;
-    }
     public function checkCom(){
         $action = $_POST['actionOnCom'];
         // nouveau et signalé remis à 0

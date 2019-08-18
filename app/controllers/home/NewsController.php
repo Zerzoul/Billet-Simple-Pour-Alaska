@@ -32,7 +32,6 @@ class NewsController extends \framework\Controller {
         $comCount;
         $coms = $this->app->getManager('comments');
         $coms = $coms->getComments($tableComs, $this->id);
-
         $coms;
         require self::NEW_PATH;
     }

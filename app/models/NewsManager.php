@@ -22,7 +22,7 @@ class NewsManager extends \framework\Manager{
     }
     //ADMIN
     public function getListBillet($table, $isTrashed){
-        $getBillets = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif FROM '.$table.' WHERE isTrashed=:isTrashed ');
+        $getBillets = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue FROM '.$table.' WHERE isTrashed=:isTrashed ');
         $getBillets->execute(array('isTrashed' => $isTrashed,));
         $getBillets = $getBillets->fetchAll(\PDO::FETCH_OBJ);
         return $getBillets;

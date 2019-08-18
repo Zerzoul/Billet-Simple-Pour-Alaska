@@ -6,7 +6,7 @@ class CommentsManager extends Manager{
 
 
     public function getComments($table, $id){
-        $getComs = $this->pdo->prepare('SELECT id, news_id, author, comments, date FROM '.$table.' WHERE post_id = :post_id AND statue = '.parent::COM_VALID.' OR statue = '.parent::COM_NEW);
+        $getComs = $this->pdo->prepare('SELECT id, post_id, author, comments, date FROM '.$table.' WHERE post_id = :post_id AND statue = '.parent::COM_VALID.' OR statue = '.parent::COM_NEW);
         $getComs->execute(array('post_id' => $id));
         $dataComs = $getComs->fetchAll(\PDO::FETCH_OBJ);
         return $dataComs;

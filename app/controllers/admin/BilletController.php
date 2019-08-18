@@ -10,30 +10,6 @@ class BilletController extends \framework\Controller{
 
     const LIST_BILLET_PATH = 'app/view/admin/Billets/billets.php';
 
-    protected function getTheStatue($statue){
-        switch($statue){
-            case 1:
-                return 'Publier';
-                break;
-            case 2:
-                return 'A valider';
-                break;
-            case 3:
-                return 'Brouillon';
-                break;
-            case 4:
-                return 'Publier';
-                break;
-            case 5:
-                return 'Ignorer';
-                break;
-            case 6:
-                return 'Nouveau';
-                break;
-            default:
-                return null;
-        }
-    }
 
     public function displayAllBillet($table, $isTrashed){
         $this->isTypeNull = false;
@@ -90,5 +66,43 @@ class BilletController extends \framework\Controller{
         var_dump($this->path);
         header('Location: '.$this->path.'-'.$this->type);
     }
+    public function statueReport($obj){
+        isset($obj->reported) ? $reported = $obj->reported : null;
+        $statue = $obj->statue;
+        $badgeColorDefine = $this->reportDefine($statue, $reported = null);
+
+        $reported === '1' ? $reportTxt = "Signalé" : $reportTxt = $this->getTheStatue($obj->statue);
+
+        return '<div class="badge badge-pill '.$badgeColorDefine.'">'.$reportTxt[0].'</div>';
+    }
+    public function reportDefine($statue, $reported){
+        $finalClass = $this->getTheStatue($statue);
+        return $reported === '1' ? $finalClass = 'badge-warning' : $finalClass[1];
+    }
+    protected function getTheStatue($statue){
+        switch($statue){
+            case 1:
+                return ['Publier', 'badge-success'];
+                break;
+            case 2:
+                return ['A valider', 'badge-warning'];
+                break;
+            case 3:
+                return ['Brouillon', 'badge-danger'];
+                break;
+            case 4:
+                return ['Publier', 'badge-success'];
+                break;
+            case 5:
+                return ['Ignorer', 'badge-danger'];
+                break;
+            case 6:
+                return ['Nouveau', 'badge-primary'];
+                break;
+            default:
+                return null;
+        }
+    }
+
 
 }
