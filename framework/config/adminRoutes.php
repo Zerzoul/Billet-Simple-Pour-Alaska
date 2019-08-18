@@ -76,5 +76,8 @@ return array( 'GET' =>
             ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
         'restore-billet' => [ 'path' => '/restore-type-id',
             ['controller' => 'DeleteBillet', 'method' => 'deleteBillet']],
+
+        'check-com' => [ 'path' => '/checkCom-type-postId-id',
+            ['controller' => 'comments', 'method' => 'checkCom']],
     ]
 );

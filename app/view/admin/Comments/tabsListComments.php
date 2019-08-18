@@ -1,5 +1,5 @@
 <h5><?= ucfirst($typeSelected)?></h5>
-<table class="table">
+<table class="table table-hover">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -19,17 +19,20 @@
         <tbody>
         <tr>
             <th scope="row"><?= $com->id ?></th>
-            <td><div>rond</div></td>
+
+            <td><?php echo $this->statueReport($com) ;?></td>
+
             <td><?php $date = new DateTime($com->date);
                 echo $date->format('d/m/Y à H:i'); ?></td>
             <td><?= $com->author ?></td>
-            <td><?= $com->news_id ?></td>
+            <td><?= $com->title ?></td>
             <td>
-                <a href="<?= $path ?>-<?= $type ?>-<?= $com->news_id ?>" class="text-light">
-                    <button class="btn btn-primary">
-                       Voir
-                    </button>
-                </a>
+                <form action="<?= $path ?>-<?= $type ?>-<?= $com->post_id ?>" method="get">
+                    <button type="submit" class="btn btn-primary " name="idCom" value="<?= $com->id ?>"
+                        <?php if(isset($actionCom->id)) { echo  $com->id === $actionCom->id ? 'disabled' : '';} ?>
+                    >Voir</button>
+                </form>
+
             </td>
         </tr>
         </tbody>

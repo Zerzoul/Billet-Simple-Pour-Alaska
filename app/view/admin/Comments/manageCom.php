@@ -11,7 +11,7 @@ if(!$isTypeNull){
 <?php
 if(!$isIdNull){
     ?>
-    <div class="border fixed rounded p-2 col-5" >
+    <div class="border sticky-top rounded p-2 col-5" >
         <?php require 'actionOnComments.php'; ?>
     </div>
     <?php

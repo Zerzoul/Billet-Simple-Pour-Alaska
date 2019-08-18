@@ -21,6 +21,15 @@ class BilletController extends \framework\Controller{
             case 3:
                 return 'Brouillon';
                 break;
+            case 4:
+                return 'Publier';
+                break;
+            case 5:
+                return 'Ignorer';
+                break;
+            case 6:
+                return 'Nouveau';
+                break;
             default:
                 return null;
         }
@@ -30,12 +39,6 @@ class BilletController extends \framework\Controller{
         $this->isTypeNull = false;
         $news = $this->app->getManager('news');
         return $news->getListBillet($table, $isTrashed);
-
-    }
-    public function displayAllComments($table){
-        $this->isTypeNull = false;
-        $news = $this->app->getManager('comments');
-        return $news->getAllComments($table);
     }
     public function getTheBillet($table, $id, $isTrashed){
         $news = $this->app->getManager('news');
@@ -61,6 +64,20 @@ class BilletController extends \framework\Controller{
         } else {
             return $error = 'Une erreur c\'est prodduite. Votre billet n\'a pas pu être enregistrer';
         }
+    }
+    public function displayAllComments($tableCom, $tablePost){
+        $this->isTypeNull = false;
+        $news = $this->app->getManager('comments');
+        return $news->getAllComments($tableCom, $tablePost);
+    }
+    public function displayComment($tableCom, $tablePost, $id){
+        $this->isIdNull = false;
+        $com = $this->app->getManager('comments');
+        return $com->getComment($tableCom, $tablePost, $id);
+    }
+    public function updateStatueComment($tableCom, $id, $statue){
+        $com = $this->app->getManager('comments');
+        return $com->updateStatueComment($tableCom, $id, $statue);
     }
 
     public function selectTheType(){

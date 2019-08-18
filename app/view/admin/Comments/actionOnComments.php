@@ -3,13 +3,12 @@
         <div class="col-4">
             <p class="font-weight-bold">Type : <?= ucfirst($typeSelected)?></p>
         </div>
-
         <div class="col-4 text-right">
             <p class="font-weight-bold p-0 m-0">
                 Date de création
             </p>
             <p class="p-0 m-0">
-                <?php $date = new DateTime($actionBillet->date_create);
+                <?php $date = new DateTime($actionCom->date);
                 echo $date->format('d/m/Y'); ?>
             </p>
         </div>
@@ -17,38 +16,18 @@
 
     <div class="py-3">
         <div>
-            <h5><?= $actionBillet->title ?></h5>
+            <h5><?= $actionCom->title ?></h5>
         </div>
         <div>
             <p>
-                <?= (substr(strip_tags($actionBillet->post), 0, 200)) ?>...
-
+                <?= $actionCom->comments?>
             </p>
         </div>
-    </div>
-
-    <div class="row justify-content-between">
-        <div class="col-4">
-            <p class="font-weight-bold m-0">Statue :</p>
-            <p class="p-0 m-0"> <?= $statue ?> </p>
+        <div class="row justify-content-between mt-5 mx-1">
+            <form method="post" action="<?=$checkCom?>">
+                <button type="submit" name="actionOnCom" value="valider" class="btn btn-success">Valider</button>
+                <button type="submit" name="actionOnCom" value="ignorer" class="btn btn-danger">Ignorer</button>
+            </form>
         </div>
-
-        <?php
-        if(!is_null($actionBillet->date_modif)){
-            ?>
-        <div class="col-4 text-right">
-            <p class="font-weight-bold m-0">Date de modification</p>
-            <p class="p-0 m-0">  <?php $date = new DateTime($actionBillet->date_modif);
-                echo $date->format('d/m/Y'); ?></p>
-        </div>
-        <?php
-        }
-        ?>
     </div>
-
-    <div class="row justify-content-between mt-5 mx-1">
-        <a href="<?= $linkAction1 ?>-<?= $typeSelected ?>-<?= $actionBillet->id ?>"><button type="button" class="btn btn-warning"><?= $bouton1 ?></button></a>
-        <a href="<?= $linkAction2 ?>-<?= $typeSelected ?>-<?= $actionBillet->id ?>"><button type="button" class="btn btn-danger"><?= $bouton2 ?></button></a>
-    </div>
-
 </div>
