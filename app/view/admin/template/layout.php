@@ -27,7 +27,7 @@
             if(isset($_SESSION['admin'])){
             ?>
             <section>
-                <nav>
+                <nav class="nav">
                     <?php include 'nav.php'; ?>
                 </nav>
             </section>

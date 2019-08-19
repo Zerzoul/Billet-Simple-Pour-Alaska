@@ -21,13 +21,7 @@ class Route{
     public function match($url){
         $url = trim($url, '/');
         $urlParse = explode('-', $url);
-
         $pathParse = explode('-',$this->_path);
-
-        $regex = "#^$pathParse[0]$#i";
-        if (!preg_match($regex, $urlParse[0], $matches)) {
-            return false;
-        }
 
         $regex = "#^$pathParse[0]$#i";
         if (!preg_match($regex, $urlParse[0], $matches)) {
@@ -38,18 +32,28 @@ class Route{
         for($i = 0; count($this->_routes)-1 > $i; $i++){
             $this->_function[] = $this->_routes[$i];
         }
-
         $this->splitParams($urlParse);
         return true;
     }
     public function splitParams($urlParse){
 
         foreach ($urlParse as $params){
-            if(preg_match('/[0-9]*/', $params, $id)){
-                if(!empty($id[0])){
-                    $this->_matchId = intval($id[0]);
-                }
-            };
+            if(!empty($_SESSION['admin'])){
+                if(preg_match('/[0-9]*/', $params, $id)){
+                    if(!empty($id[0])){
+                        $id = $id[0];
+                        $this->_matchId = intval($id);
+                    }
+                };
+            } else {
+                if(preg_match('/[A-Z]*/', $params, $id)){
+                    if(!empty($id[0])){
+                        $id = urldecode(base64_decode($id[0]));
+                        $this->_matchId = intval($id);
+                    }
+                };
+            }
+
         }
         foreach ($urlParse as $params){
             if(preg_match('/news|episodes|chapitre/', $params, $type)){
@@ -65,7 +69,6 @@ class Route{
         if(is_int($this->_matchId)){
             $this->_id = $this->_matchId;
         }
-
     }
 
     public function call(){

@@ -55,7 +55,12 @@ class Controller {
             if(!isset($_SESSION['admin'])){
                 header("Location: ");
             }
+        } else {
+            $_SESSION = [];
         }
+    }
+    public function urlEncode($url){
+        return urlencode(base64_encode($url));
     }
 
 }

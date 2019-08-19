@@ -13,6 +13,10 @@ class EpisodesController extends \framework\Controller {
         require 'app/view/home/Episodes/episodes.php';
     }
     public function chapter(){
+        if(is_null($this->id)){
+            header ('Location: episodes');
+            exit();
+        }
         $table = $this->selectTable('episodes');
         $tableComs = $this->selectTableComments('episodes');
 

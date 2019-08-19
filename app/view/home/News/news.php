@@ -19,6 +19,6 @@
             <p>
                 <?= $coms->counts ?> Commentaire(s)
             </p>
-            <a href="/Billet-Simple-Pour-Alaska/news-<?= $new->id ?>">Lire la suite</p></a>
+            <a href="/Billet-Simple-Pour-Alaska/news-<?= $this->urlEncode($new->id )?>">Lire la suite</p></a>
         </div>
     </div>

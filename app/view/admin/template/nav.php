@@ -2,7 +2,7 @@
         <div class="col-sm">
             <div class="dropdown-divider"></div>
             <div class="text-center">
-                <h2>DashBoard</h2>
+                <a class="nav-link" href="dashboard"><h2>DashBoard</h2></a>
             </div>
 
             <div class="btn-group col-sm pt-2">

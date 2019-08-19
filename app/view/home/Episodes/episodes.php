@@ -35,7 +35,7 @@
                     <h3>Chapitre <?= $episode->id ?> - <?= $episode->title ?></h3>
                 </div>
                 <div class="btn_elmt">
-                    <a href="/Billet-Simple-Pour-Alaska/chapitre-<?= $episode->id ?>"><p>Lire</p></a>
+                    <a href="/Billet-Simple-Pour-Alaska/chapitre-<?= $this->urlEncode($episode->id) ?>"><p>Lire</p></a>
                 </div>
             </div>
             <?php

@@ -20,7 +20,10 @@ class NewsController extends \framework\Controller {
         }
     }
     public function newsPost(){
-
+        if(is_null($this->id)){
+            header ('Location: /Billet-Simple-Pour-Alaska/');
+            exit();
+        }
         $table = $this->selectTable($this->path);
         $tableComs = $this->selectTableComments($this->path);
 
