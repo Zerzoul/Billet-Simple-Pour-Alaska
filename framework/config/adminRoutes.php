@@ -3,7 +3,7 @@
 return array( 'GET' =>
 
     [
-        'dashboard' => [ 'path' => '/',
+        'access' => [ 'path' => '/',
             ['controller' => 'authentification', 'method' => 'access']],
         'login' => [ 'path' => '/login',
             ['controller' => 'authentification', 'method' => 'formLogin']],
@@ -11,6 +11,9 @@ return array( 'GET' =>
             ['controller' => 'authentification', 'method' => 'formRegister']],
         'deconnexion' => [ 'path' => '/deconnexion',
             ['controller' => 'authentification', 'method' => 'deconnexion']],
+
+        'Dashboard' => [ 'path' => '/dashboard',
+            ['controller' => 'dashboard', 'method' => 'dashboard']],
 
         'billets' => [ 'path' => '/billets',
             ['controller' => 'ListBillet', 'method' => 'listBillet']],

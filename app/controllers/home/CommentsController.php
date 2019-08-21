@@ -23,7 +23,7 @@ class CommentsController extends \framework\Controller {
         require $this->validator;
         $id =  $this->id;
         $type = $this->type;
-
+        var_dump($id);
         $validator = new ContentValidator();
 
         $email = $validator->emailContent($_POST['email']);
@@ -37,7 +37,7 @@ class CommentsController extends \framework\Controller {
         $table = $this->selectTableComments($type === 'chapitre' ? 'episodes' : $type);
         $coms->addComs($table,$id, $author, $comments);
 
-        header('location: /Billet-Simple-Pour-Alaska/'.$type.'-'.$id);
+        header('location: '.$type.'-'.$this->urlEncode($this->id));
     }
     public function validate(){
         //TODO: vérifie l'authentisité et renvoie une erreur s'il y a des failles de sécurité
@@ -52,7 +52,8 @@ class CommentsController extends \framework\Controller {
         if(!$report){
             throw new \Exception('The reported can\'t be executed');
         }
-        header('location: /Billet-Simple-Pour-Alaska/'.$this->type.'-'.$this->id);
+
+        header('location: '.$this->type.'-'.$this->urlEncode($this->id));
     }
 
 }

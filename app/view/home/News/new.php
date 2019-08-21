@@ -30,7 +30,7 @@
         <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="/Billet-Simple-Pour-Alaska/connect">Je m'inscris !</a></p>
     </div>
     <div class="comment_form">
-        <form action="addcoms-news-<?= $new->id ?>" method="POST">
+        <form action="addcoms-news-<?= $this->urlEncode($new->id) ?>" method="POST">
             <div class="form_content">
                 <label for="">E-mail</label>
                 <input type="text" class="input_size" name="email" required>
@@ -74,7 +74,7 @@
                 <p><?=$com->comments?></p>
             </div>
             <form action="" method="post">
-                <button class="date" type="submit" name="idCom" value="<?= $com->id ?>">Signaler</button>
+                <button class="date" type="submit" name="idCom" value="<?= $this->urlEncode($com->id) ?>">Signaler</button>
             </form>
         </div>
         <?php
