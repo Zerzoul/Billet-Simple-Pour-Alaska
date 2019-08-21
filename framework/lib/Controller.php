@@ -23,7 +23,6 @@ class Controller {
         $this->app = $app;
         $this->form = $form;
 
-        // TODO revoir la securité de ID, il doit passer par une phase null
         if(is_array($params)){
             $this->id = $params['id'];
             $this->type = $params['type'];
@@ -56,7 +55,7 @@ class Controller {
                 header("Location: ");
             }
         } else {
-            $_SESSION = [];
+            unset($_SESSION['admin']);
         }
     }
     public function urlEncode($url){

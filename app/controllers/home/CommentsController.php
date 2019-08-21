@@ -6,6 +6,7 @@ use mysql_xdevapi\Exception;
 class CommentsController extends \framework\Controller {
 
     protected $validator = 'ContentValidator.php';
+
     public function getCountCom($table, $id){
         $coms = $this->app->getManager('comments');
         $coms = $coms->countComs($table, $id);
@@ -16,9 +17,9 @@ class CommentsController extends \framework\Controller {
         $table = $this->selectTableComments(null);
         $coms = $this->app->getManager('comments');
         $coms = $coms->getComments($table, $this->id);
-
         return $coms;
     }
+
     public function addComment(){
         require $this->validator;
         $id =  $this->id;
@@ -52,7 +53,7 @@ class CommentsController extends \framework\Controller {
         if(!$report){
             throw new \Exception('The reported can\'t be executed');
         }
-
+        var_dump($this->id);
         header('location: '.$this->type.'-'.$this->urlEncode($this->id));
     }
 

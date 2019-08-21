@@ -5,8 +5,11 @@ use framework\Controller;
 
 class DashBoardController extends Controller
 {
+    protected $countnewCom;
+    protected $countBillet;
+
     public function dashboard(){
-        $hello = 'hello';
+
         require 'app/view/admin/Dashboard/dashboard.php';
     }
 }

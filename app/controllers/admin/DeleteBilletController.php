@@ -71,12 +71,14 @@ class DeleteBilletController extends BilletController{
     public function deleteBillet(){
         $type = $this->type;
         $id = $this->id;
+        var_dump($this->path);
 
         if($_POST['validationDeleteBillet'] == 'Annuler'){
             $this->cancelDeleteAction();
             exit();
         }
         $table = $this->selectTable($type);
+        $tableCom = $this->selectTableComments($type);
         $news = $this->app->getManager('news');
         $isTrashed = $news->getTheBilletWithoutTrash($table, $id);
 
@@ -86,8 +88,8 @@ class DeleteBilletController extends BilletController{
                 header('Location: billets');
                 exit();
             }
-            $news->deleteThisBillet($table, $id);
-            header('Location: trashbillettodelete');
+            $news->deleteThisBillet($table, $tableCom,$id);
+            header('Location: trashbillets');
             exit();
         } else {
             $news->trashThisBillet($table, $id);

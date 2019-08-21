@@ -20,6 +20,7 @@ class NewsController extends \framework\Controller {
         }
     }
     public function newsPost(){
+        var_dump($this->id);
         if(is_null($this->id)){
             header ('Location: /Billet-Simple-Pour-Alaska/');
             exit();
