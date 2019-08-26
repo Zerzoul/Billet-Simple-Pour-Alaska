@@ -135,7 +135,6 @@ a{
 /*FORM*/
 .comment_form{
     width: 85%;
-    margin: auto;
     padding: 15px 30px 15px 30px;
     margin-top: 2%;
 }
@@ -216,6 +215,27 @@ textarea{
     margin:  5% 10% 0 0;
     align-self: flex-end;
 }
+/*CONNEXION*/
+.auth_form{
+    width: 45%;
+    padding: 15px 10px 15px 10px;
+    margin: 3% 0;
+}
+.auth_input{
+    border: none;
+    width: 65%;
+    height: 40px;
+    padding: 0 1% 0 1%;
+    font-size: 1.2em;
+}
+#register label{
+    width: 30%;
+}
+#register .form_flex,
+#connect .form_flex{
+    margin-top: 7%;
+}
+
 /*FOOTER*/
 .footer_block{
     background-color: #666666;

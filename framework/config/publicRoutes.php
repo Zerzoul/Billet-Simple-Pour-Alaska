@@ -9,8 +9,12 @@ return array( 'GET' =>
         ['controller' => 'episodes', 'method' => 'listChapter']],
     'chapter' => ['path' => '/chapitre-id',
         ['controller' => 'episodes', 'method' => 'chapter']],
-        'about' => ['path' => '/about',
-            ['controller' => 'about', 'method' => 'getAboutPage']],
+     'about' => ['path' => '/about',
+         ['controller' => 'about', 'method' => 'getAboutPage']],
+        'connexion' => ['path' => '/connexion',
+            ['controller' => 'authentification', 'method' => 'authForm']],
+        'inscroption' => ['path' => '/inscription',
+            ['controller' => 'register', 'method' => 'registerForm']],
     ],
 
 

@@ -50,7 +50,6 @@ class Route{
                     if(!empty($id[0])){
                         $id = base64_decode($id[0]);
                         $this->_matchId = intval($id);
-
                     }
                 };
             }

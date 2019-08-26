@@ -27,7 +27,7 @@
         <h2>Laisser un commentaire ?</h2>
     </div>
     <div class="form_flex">
-        <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="/Billet-Simple-Pour-Alaska/connect">Je m'inscris !</a></p>
+        <p>Pour profiter des différents avantages du site, prenez le temps de vous inscrire. <a href="inscription">Je m'inscris !</a></p>
     </div>
     <div class="comment_form">
         <form action="addcoms-news-<?= $this->urlEncode($new->id) ?>" method="POST">

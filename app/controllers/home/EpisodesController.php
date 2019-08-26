@@ -13,7 +13,7 @@ class EpisodesController extends \framework\Controller {
         require 'app/view/home/Episodes/episodes.php';
     }
     public function chapter(){
-        if(is_null($this->id)){
+        if(is_null($this->id) || $this->id === 0){
             header ('Location: episodes');
             exit();
         }
