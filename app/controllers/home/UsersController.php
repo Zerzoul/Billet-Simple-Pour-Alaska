@@ -7,17 +7,13 @@ namespace controllers\home;
 
 class UsersController extends \framework\Controller
 {
-    public function checkEmail($email){
-        $users = $this->app->getManager('Users');
-        $users =  $users->getUsers();
-
-        foreach ($users as $user){
-            if($user->email === $email){
-                //TODO other condition if the user is already register and loged in
-                return $user->pseudo;
-            }
+    public function getUser($email){
+        $pseudoExist = $this->isTheEmailExist($email);
+        if(!is_null($pseudoExist)){
+            $pseudoAnonyme = $pseudoExist;
+        } else {
+            $pseudoAnonyme = $this->assignPseudo();
         }
-        $pseudoAnonyme = $this->assignPseudo();
         $this->addUser($pseudoAnonyme, $email);
         return $pseudoAnonyme;
     }
@@ -30,6 +26,17 @@ class UsersController extends \framework\Controller
     }
     public function addUser($pseudo, $email){
         $users = $this->app->getManager('Users');
-        return $users->addUsers($pseudo, $email);
+        return $users->addAnonymeUsers($pseudo, $email);
+    }
+    public function isTheEmailExist($email){
+        $users = $this->app->getManager('Users');
+        $users =  $users->getUsers();
+        foreach ($users as $user){
+            if($user->email === $email){
+                //TODO other condition if the user is already register and loged in
+                return $user->pseudo;
+            }
+        }
+        return null;
     }
 }

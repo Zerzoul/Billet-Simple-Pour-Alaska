@@ -13,17 +13,26 @@ return array( 'GET' =>
          ['controller' => 'about', 'method' => 'getAboutPage']],
         'connexion' => ['path' => '/connexion',
             ['controller' => 'authentification', 'method' => 'authForm']],
+        'deconnexion' => ['path' => '/deconnexion',
+            ['controller' => 'authentification', 'method' => 'deconnexion']],
         'inscroption' => ['path' => '/inscription',
             ['controller' => 'register', 'method' => 'registerForm']],
+
     ],
 
 
     'POST' => [
-        'report' => ['path' => '/news-id',
+        'report-news' => ['path' => '/news-id',
+            ['controller' => 'comments', 'method' => 'report']],
+        'report-chapitre' => ['path' => '/chapitre-id',
             ['controller' => 'comments', 'method' => 'report']],
         'addcomFromNews' => ['path' => '/addcoms-type-id',
             ['controller' => 'comments', 'method' => 'addComment']],
         'addcomFromEpisodes' => ['path' => '/addcoms-type-id',
             ['controller' => 'comments', 'method' => 'addComment']],
+        'registercontrole' => ['path' => '/registercheck',
+            ['controller' => 'register', 'method' => 'registerValidation']],
+        'getConnected' => ['path' => '/connexion',
+            ['controller' => 'Authentification', 'method' => 'authValidator']],
     ]
 );

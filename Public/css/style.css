@@ -133,6 +133,11 @@ a{
     margin-top: 1%;
 }
 /*FORM*/
+.error_form{
+    color: red;
+    font-style: italic;
+    margin-left: 10px;
+}
 .comment_form{
     width: 85%;
     padding: 15px 30px 15px 30px;
@@ -156,14 +161,14 @@ textarea{
     padding: 0;
 }
 .input_size{
-    border: none;
+    border: #e1e1e1 1px solid;
     width: 85%;
     height: 30px;
     padding: 0 1% 0 1%;
 }
 .textarea_size{
     height: 140px;
-    border: none;
+    border: #e1e1e1 1px solid;
     width: 85%;
     padding: 1%;
     resize: none;
@@ -222,11 +227,11 @@ textarea{
     margin: 3% 0;
 }
 .auth_input{
-    border: none;
     width: 65%;
     height: 40px;
     padding: 0 1% 0 1%;
-    font-size: 1.2em;
+    font-size: 0.8em;
+    border: #e1e1e1 1px solid;
 }
 #register label{
     width: 30%;

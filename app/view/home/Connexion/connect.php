@@ -1,6 +1,9 @@
 <div id="connect">
 <div class="about_content">
     <h2>Connexion</h2>
+
+        <?= $errorMessage ?>
+
     <div class="auth_form">
         <form action="" method="post">
             <div class="form_content">

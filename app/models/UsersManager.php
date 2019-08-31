@@ -13,9 +13,19 @@ class UsersManager extends Manager
         return $users;
     }
     public function getUsers(){
-        $getUsers = $this->pdo->query('SELECT id, pseudo, date_sign,email FROM user ');
+        $getUsers = $this->pdo->query('SELECT id, pseudo, password, date_sign,email FROM user ');
         $users = $getUsers->fetchAll(\PDO::FETCH_OBJ);
         return $users;
+    }
+    public function getUser($name){
+        $getUser = $this->pdo->prepare('SELECT id, pseudo, password, date_sign,email FROM user WHERE pseudo = :pseudo ');
+        $getUser->execute(array(
+            'pseudo' => $name,
+        ));
+        $user = $getUser->fetch(\PDO::FETCH_LAZY);
+        var_dump($user);
+        return isset($user) ? $user : false;
+
     }
     public function getAdminUser(){
         $getAdminUsers = $this->pdo->query('SELECT id, username, password, statue FROM adminmanagerusers ');
@@ -27,7 +37,7 @@ class UsersManager extends Manager
         $usersCount = $getUsers->fetch(\PDO::FETCH_LAZY );
         return $usersCount;
     }
-    public function addUsers($pseudo,$email){
+    public function addAnonymeUsers($pseudo,$email){
         $addUser = $this->pdo->prepare('INSERT INTO user(pseudo, email, statue) VALUES (:pseudo, :email, :statue)');
         $addUser->execute(array(
             'pseudo' => $pseudo,
@@ -35,5 +45,24 @@ class UsersManager extends Manager
             'statue' => parent::USER_ACTIF,
         ));
         return $addUser;
+    }
+    public function addRealUsers($pseudo, $passHash,$email){
+        $addUser = $this->pdo->prepare('INSERT INTO user(pseudo, email, password,statue) VALUES (:pseudo, :email, :password,:statue)');
+        $addUser->execute(array(
+            'pseudo' => $pseudo,
+            'email' => $email,
+            'password' => $passHash,
+            'statue' => parent::USER_ACTIF,
+        ));
+        return $addUser;
+    }
+    public function updateUsers($pseudo, $passHash, $email){
+        $updateUser = $this->pdo->prepare('UPDATE user SET pseudo = :pseudo, password = :password WHERE email = :email');
+        $updateUser->execute(array(
+            'pseudo' => $pseudo,
+            'email' => $email,
+            'password' => $passHash,
+        ));
+        return $updateUser;
     }
 }

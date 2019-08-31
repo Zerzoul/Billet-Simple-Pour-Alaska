@@ -67,13 +67,17 @@ class BilletController extends \framework\Controller{
         header('Location: '.$this->path.'-'.$this->type);
     }
     public function statueReport($obj){
-        isset($obj->reported) ? $reported = $obj->reported : null;
+        $reported =  null;
+        if(isset($obj->reported)){
+            $reported = $obj->reported;
+        }
+
         $statue = $obj->statue;
-        $badgeColorDefine = $this->reportDefine($statue, $reported = null);
+        $badgeColorDefine = $this->reportDefine($statue, $reported);
 
-        $reported === '1' ? $reportTxt = "Signalé" : $reportTxt = $this->getTheStatue($obj->statue);
-
-        return '<div class="badge badge-pill '.$badgeColorDefine.'">'.$reportTxt[0].'</div>';
+        $reportTxtStatue = $this->getTheStatue($obj->statue);
+        $reportTxt = $reported === '1' ? "Signalé" : $reportTxtStatue[0];
+        return '<div class="badge badge-pill '.$badgeColorDefine.'">'.$reportTxt.'</div>';
     }
     public function reportDefine($statue, $reported){
         $finalClass = $this->getTheStatue($statue);

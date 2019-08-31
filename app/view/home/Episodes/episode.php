@@ -28,10 +28,13 @@
     </div>
     <div class="comment_form">
         <form action="addcoms-chapitre-<?= $this->urlEncode($chapter->id) ?>" method="POST">
+
+            <?php if(!isset($_SESSION['userName'])) {?>
             <div class="form_content">
                 <label for="">E-mail</label>
                 <input type="text" class="input_size" name="email" required>
             </div>
+            <?php } ?>
 
             <div class="form_content">
                 <label for="">Commentaire</label>

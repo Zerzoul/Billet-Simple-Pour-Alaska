@@ -24,14 +24,15 @@ class CommentsController extends \framework\Controller {
         require $this->validator;
         $id =  $this->id;
         $type = $this->type;
-        var_dump($id);
-        $validator = new ContentValidator();
 
-        $email = $validator->emailContent($_POST['email']);
+        $mail = isset($_SESSION['userMail']) ? $_SESSION['userMail'] : $_POST['email'];
+
+        $validator = new ContentValidator();
+        $email = $validator->emailContent($mail);
         $comments = $validator->commentsContent($_POST['postComment']);
 
         $users = $this->app->getController('users', 'home', null);
-        $author = $users->checkEmail($email);
+        $author = $users->getUser($email);
 
         $coms = $this->app->getManager('comments');
 
@@ -40,20 +41,16 @@ class CommentsController extends \framework\Controller {
 
         header('location: '.$type.'-'.$this->urlEncode($this->id));
     }
-    public function validate(){
-        //TODO: vérifie l'authentisité et renvoie une erreur s'il y a des failles de sécurité
-    }
-    public function anonymeAuthor(){
-        //TODO: s'il n'y a pas de compte utilisateur renvoie Anonyme + index userDb
-    }
     public function report(){
-        $table = $this->selectTableComments($this->type);
+        $type = $this->type === 'chapitre' ? 'episodes' : $this->type;
+        $table = $this->selectTableComments($type);
         $coms = $this->app->getManager('comments');
-        $report = $coms->reportCom($table, $_POST['idCom'], 1);
+        $id_post = urldecode($_POST['idCom']);
+        $report = $coms->reportCom($table, base64_decode($id_post), 1);
         if(!$report){
             throw new \Exception('The reported can\'t be executed');
         }
-        var_dump($this->id);
+
         header('location: '.$this->type.'-'.$this->urlEncode($this->id));
     }
 
