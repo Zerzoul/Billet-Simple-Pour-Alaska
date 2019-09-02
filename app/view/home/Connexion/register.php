@@ -3,42 +3,57 @@
         <h2>Inscription</h2>
         <div class="auth_form">
             <form action="registercheck" method="post">
-                <div class="form_content">
+                <div class="register_content">
                     <?= $nameLabel ?>
                     <?= $name ?>
-                    <?php
-                    if(!is_null($error_name)){
-                        echo $error_name;
-                    }
-                    ?>
+                    <div class="error_content">
+                        <?php
+                        if(!is_null($error_name)){
+                            echo $error_name;
+                        }
+                        ?>
+                    </div>
                 </div>
-                <div class="form_content">
+
+
+                <div class="register_content">
                     <?= $mailLabel ?>
                     <?= $mail ?>
-                    <?php
-                    if(!is_null($error_mail)){
-                        echo $error_mail;
-                    }
-                    ?>
+                    <div class="error_content">
+                        <?php
+                        if(!is_null($error_mail)){
+                            echo $error_mail;
+                        }
+                        ?>
+                    </div>
                 </div>
-                <div class="form_content">
+
+
+                <div class="register_content">
                     <?= $passLabel ?>
                     <?= $pass ?>
-                    <?php
-                    if(!is_null($error_pass)){
-                        echo $error_pass;
-                    }
-                    ?>
+                    <div class="error_content">
+                        <?php
+                        if(!is_null($error_pass)){
+                            echo $error_pass;
+                        }
+                        ?>
+                    </div>
                 </div>
-                <div class="form_content">
+
+                <div class="register_content">
                     <?= $passConfirmLabel ?>
                     <?= $passConfirm ?>
-                    <?php
-                    if(!is_null($error_confirm)){
-                        echo $error_confirm;
-                    }
-                    ?>
+                    <div class="error_content">
+                        <?php
+                        if(!is_null($error_confirm)){
+                            echo $error_confirm;
+                        }
+                        ?>
+                    </div>
                 </div>
+
+
                 <div  class="form_flex">
                     <?= $submit ?>
                 </div>

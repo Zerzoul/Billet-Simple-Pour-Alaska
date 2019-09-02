@@ -42,19 +42,19 @@ class RegisterController extends Controller
     }
     public function isError(){
         if(isset($_SESSION['invalid-name'])){
-            $this->error_name = '<p class="error_form">'.$_SESSION['invalid-name'].'</p>';
+            $this->error_name = '<span class="error_form">'.$_SESSION['invalid-name'].'</span>';
         }
         if(isset($_SESSION['invalid-pass'])){
-            $this->error_pass = '<p class="error_form">'.$_SESSION['invalid-pass'].'</p>';
+            $this->error_pass = '<span class="error_form">'.$_SESSION['invalid-pass'].'</span>';
         }
         if(isset($_SESSION['invalid-confirmation'])){
-            $this->error_confirm = '<p class="error_form">'.$_SESSION['invalid-confirmation'].'</p>';
+            $this->error_confirm = '<span class="error_form">'.$_SESSION['invalid-confirmation'].'</span>';
         }
         if(isset($_SESSION['invalid-mail'])){
-            $this->error_mail = '<p class="error_form">'.$_SESSION['invalid-mail'].'</p>';
+            $this->error_mail = '<span class="error_form">'.$_SESSION['invalid-mail'].'</span>';
         }
         if(isset($_SESSION['pseudo-Exist'])){
-            $this->error_name = '<p class="error_form">'.$_SESSION['pseudo-Exist'].'</p>';
+            $this->error_name = '<span class="error_form">'.$_SESSION['pseudo-Exist'].'</span>';
         }
 
     }

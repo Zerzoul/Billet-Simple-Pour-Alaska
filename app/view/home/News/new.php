@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<div class="comment_content">
+<div class="comment">
     <div class="undertitle_content">
         <h2>Laisser un commentaire ?</h2>
     </div>
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<div class="comment_content">
+<div class="comment">
         <div class="undertitle_content news_flex">
             <h2>Les commentaires</h2>
             <p><?= $comCount->counts ?> Commentaire(s)</p>
@@ -60,24 +60,26 @@
     foreach($coms as $com){
 
         ?>
-        <div class="comment_body_content">
-            <div class="title_content news_flex">
-                <h4><?=$com->author?></h4>
-                <p>Publié le
-                    <span class="date">
+        <div class="comment_content">
+            <div class="comment_body">
+                <div class="title_content news_flex">
+                    <h4><?=$com->author?></h4>
+                    <p>Publié le
+                        <span class="date">
                         <?php
                         $date = new DateTime($com->date);
                         echo $date->format('d/m/Y à H:i');
                         ?>
                     </span>
-                </p>
+                    </p>
+                </div>
+                <div class="block">
+                    <p><?=$com->comments?></p>
+                </div>
+                <form class="report" action="" method="post">
+                    <button class="date" type="submit" name="idCom" value="<?= $this->urlEncode($com->id) ?>">Signaler</button>
+                </form>
             </div>
-            <div class="block">
-                <p><?=$com->comments?></p>
-            </div>
-            <form action="" method="post">
-                <button class="date" type="submit" name="idCom" value="<?= $this->urlEncode($com->id) ?>">Signaler</button>
-            </form>
         </div>
         <?php
     }

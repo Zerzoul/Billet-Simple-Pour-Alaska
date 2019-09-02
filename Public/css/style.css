@@ -1,9 +1,12 @@
 body{
-    background-color: #fbf7f4;
+    background-color: #ebe7e3;
     margin: 0;
     padding:0;
     color: #666666;
     
+}
+a{
+    color: #666666;
 }
 header{
     display: flex;
@@ -106,22 +109,28 @@ a#close{
     padding: 15px 30px 15px 30px;
     margin-bottom: 2%;
 }
-.comment_content{
+.comment{
     padding: 15px 30px 15px 30px;
     margin-bottom: 2%;
 }
-.comment_body_content{
+.comment_content{
     width: 85%;
     margin: auto;
     background-color: white;
-    padding: 15px 30px 15px 30px;
     margin-top: 2%;
+}
+.comment_body{
+    padding: 15px 30px 15px 30px;
 }
 .news_content{
     width: 75%;
     background-color: white;
-    padding: 15px 30px 15px 30px;
     margin-bottom: 2%;
+    height: 100%;
+
+}
+.news{
+    padding: 20px
 }
 .title_content{
     border-bottom: 1px solid #666666;
@@ -155,11 +164,12 @@ a#close{
     text-align: justify;
 }
 .news_infos_elmt{
-    margin-top: 1%;
+    margin-top: 3%;
     font-style: italic;
 }
 .news_flex{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -168,12 +178,11 @@ a#close{
     justify-content: flex-end;
     margin-top: 1%;
 }
-/*FORM*/
-.error_form{
-    color: red;
-    font-style: italic;
-    margin-left: 10px;
+.report{
+    text-align: end;
 }
+/*FORM*/
+
 .comment_form{
     width: 85%;
     padding: 15px 30px 15px 30px;
@@ -185,6 +194,7 @@ label{
 .form_content{
     width:auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2%;
@@ -258,8 +268,16 @@ textarea{
     align-self: flex-end;
 }
 /*CONNEXION*/
+.register_content{
+    width:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2%;
+}
 .auth_form{
-    width: 45%;
+    width: 100%;
     padding: 15px 10px 15px 10px;
     margin: 3% 0;
 }
@@ -269,6 +287,7 @@ textarea{
     padding: 0 1% 0 1%;
     font-size: 0.8em;
     border: #e1e1e1 1px solid;
+    margin-right: 2%;
 }
 #register label{
     width: 30%;
@@ -277,7 +296,15 @@ textarea{
 #connect .form_flex{
     margin-top: 7%;
 }
+.error_content{
+    min-width: 40%;
+    width: 40%;
+}
+.error_form{
+    color: red;
+    font-style: italic;
 
+}
 /*FOOTER*/
 .footer_block{
     background-color: #666666;
@@ -326,10 +353,16 @@ footer p{
         left: calc(50% - 200px);
     }
     .news_content {
-        width: 94%;
+        width: 100%;
     }
     .footer_block {
         padding: 0;
+    }
+    .signature_about{
+        margin: 0;
+    }
+    .signature_about img{
+        width: 100%;
     }
 
 }
@@ -368,7 +401,7 @@ footer p{
         display: block;
     }
     .nav{
-        background-color: #fbf7f4;
+        background-color: #ebe7e3;
         height: 100%;
         width: 50%;
         position: absolute;
@@ -390,16 +423,38 @@ footer p{
     .nav_shadow{
         display: none;
     }
-    .news_content {
-        width: 100%;
-        height: 34vh;
-        padding: 2px;
-    }
+
     .btn_elmt {
         font-size: 1.5em;
     }
     .block{
         font-size: 1.5em;
+    }
+    .comment {
+        padding: 10px;
+        margin-bottom: 2%;
+    }
+    .comment_form {
+        width: 100%;
+        padding: 0;
+        margin-top: 2%;
+    }
+    .comment_form form {
+        margin: 0;
+        padding: 10px;
+    }
+    .input_size {
+        border: #e1e1e1 1px solid;
+        width: 100%;
+        height: 30px;
+        padding: 0 1% 0 1%;
+    }
+    .textarea_size {
+        height: 140px;
+        border: #e1e1e1 1px solid;
+        width: 100%;
+        padding: 1%;
+        resize: none;
     }
     .footer_block {
         padding: 0;
@@ -411,7 +466,7 @@ footer p{
 
 }
 @media (max-width: 425px) {
-    .body {
+    .body{
         width: 100%;
     }
     .nav {
@@ -424,13 +479,14 @@ footer p{
         width: 50%;
         left: calc(50% - 100px);
     }
-    .news_content {
-        width: 100%;
-        height: 34vh;
-        padding: 0;
-    }
+
     .block{
         font-size: 1.5em;
+    }
+
+    .error_content {
+        min-width: 40%;
+        width: 100%;
     }
     .footer_block {
         padding: 0;
