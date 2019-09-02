@@ -31,10 +31,12 @@
     </div>
     <div class="comment_form">
         <form action="addcoms-news-<?= $this->urlEncode($new->id) ?>" method="POST">
-            <div class="form_content">
-                <label for="">E-mail</label>
-                <input type="text" class="input_size" name="email" required>
-            </div>
+            <?php if(!isset($_SESSION['userName'])) {?>
+                <div class="form_content">
+                    <label for="">E-mail</label>
+                    <input type="text" class="input_size" name="email" required>
+                </div>
+            <?php } ?>
 
             <div class="form_content">
                 <label for="">Commentaire</label>

@@ -13,21 +13,20 @@
     <script>tinymce.init({selector:'textarea'});</script>
 </head>
 <body>
-<header>
+<header >
     <?php include 'header.php'; ?>
 </header>
 
-<section>
-    <div class="container-fluid p-0 m-0 h-100">
+    <div class="container-fluid p-0 m-0 mh-100">
         <div>
         <div class="row m-0">
         <!-- variable php si admin authentifier -->
-            <div class="col-2 p-0">
+            <div class="col-2 p-0 ">
             <?php
             if(isset($_SESSION['admin'])){
             ?>
             <section>
-                <nav class="nav">
+                <nav class="nav h-100 vh-100 ">
                     <?php include 'nav.php'; ?>
                 </nav>
             </section>

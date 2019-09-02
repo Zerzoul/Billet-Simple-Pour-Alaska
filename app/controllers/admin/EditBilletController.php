@@ -25,7 +25,7 @@ class EditBilletController extends BilletController{
         $addBilletOnly = $this->addBilletOnly;
         $statue = $this->updateStatue;
 
-        $title = $this->form->input("text", "titleBillet",  $this->updateTitle, "form-control");
+        $title = $this->form->input("text", "titleBillet",  $this->updateTitle, "form-control", true);
         $titleLabel = $this->form->label("Titre", "titleBillet");
 
         $contentBilletTextarea = $this->form->textarea("contentBillet", $this->updatePost);

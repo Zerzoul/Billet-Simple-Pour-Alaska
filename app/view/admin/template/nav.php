@@ -1,4 +1,4 @@
-<div class=" p-3 bg-info column text-white h-100" style="height:100%;">
+<div class=" p-3 bg-info column text-white mh-100" style="height: 100%;">
         <div class="col-sm">
             <div class="dropdown-divider"></div>
             <div class="text-center">
