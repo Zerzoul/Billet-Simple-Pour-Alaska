@@ -27,6 +27,17 @@ class NewsManager extends \framework\Manager{
         $getBillets = $getBillets->fetchAll(\PDO::FETCH_OBJ);
         return $getBillets;
     }
+    public function getCountBillet($isTrashed, $statue){
+        $getBillets = $this->pdo->prepare('SELECT SUM(count.post) As billetCount FROM 
+                                            ( SELECT COUNT(*) As count FROM newspost WHERE isTrashed=:isTrashed AND statue=:statue
+                                              UNION
+                                              SELECT COUNT(*) As count FROM episodespost WHERE isTrashed=:isTrashed AND statue=:statue ) As post');
+        $getBillets->execute(array('isTrashed' => $isTrashed, 'statue' => $statue));
+        var_dump($getBillets);
+        $getBillets = $getBillets->fetchAll(\PDO::FETCH_OBJ);
+        var_dump($getBillets);
+        return $getBillets;
+    }
     public function getTheBilletWithoutTrash($table, $id)
     {
         $getNews = $this->pdo->prepare('SELECT id, title, post, date_create, date_modif, statue, isTrashed FROM ' . $table . ' WHERE id=:id ');

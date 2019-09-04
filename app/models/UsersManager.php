@@ -6,9 +6,12 @@ use \framework\Manager;
 
 class UsersManager extends Manager
 {
-
     public function countFromUsers(){
-        $getUsers = $this->pdo->query('SELECT COUNT(c.author) AS userCount, u.id,u.pseudo, u.date_sign, u.email FROM newscomments c INNER JOIN user u ON u.pseudo = c.author GROUP BY u.pseudo ');
+        $getUsers = $this->pdo->query('SELECT SUM(newsCount) AS userCount, t.id, t.pseudo, t.date_sign, t.email FROM
+                                      (( SELECT COUNT(C.author) AS newsCount, B.id, B.pseudo, B.date_sign, B.email FROM user B LEFT JOIN newscomments C ON (B.pseudo = C.author) GROUP BY B.id)
+                                        UNION ALL
+                                        ( SELECT COUNT(E.author) AS episodesCount, D.id, D.pseudo, D.date_sign, D.email FROM user D LEFT JOIN episodescomments E ON (D.pseudo = E.author) GROUP BY D.id)
+                                      )t GROUP BY t.id');
         $users = $getUsers->fetchAll(\PDO::FETCH_OBJ);
         return $users;
     }
@@ -23,7 +26,6 @@ class UsersManager extends Manager
             'pseudo' => $name,
         ));
         $user = $getUser->fetch(\PDO::FETCH_LAZY);
-        var_dump($user);
         return isset($user) ? $user : false;
 
     }

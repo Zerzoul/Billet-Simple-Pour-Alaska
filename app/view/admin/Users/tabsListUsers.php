@@ -20,9 +20,9 @@
         <tr>
             <th scope="row"><?= $user->id ?></th>
             <td><?= $user->pseudo ?></td>
-            <td> <?php $date = new DateTime($user->date_sign);
+            <td> <?= $user->email ?></td>
+            <td><?php $date = new DateTime($user->date_sign);
                 echo $date->format('d/m/Y'); ?></td>
-            <td><?= $user->email ?></td>
             <td><?= $user->userCount ?></td>
         </tr>
         </tbody>
