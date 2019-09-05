@@ -12,8 +12,8 @@ class NewsController extends \framework\Controller {
 
         foreach($news as $new){
             $tableComs = $this->selectTableComments($this->path);
-            $coms = $this->app->getController('comments', 'home', null);
-            $coms = $coms->getCountCom($tableComs, $new->id);
+            $coms = $this->app->getManager('comments');
+            $coms = $coms->countComs($tableComs, $new->id);
             $coms;
             $new;
             require self::NEWS_PATH;
@@ -24,6 +24,7 @@ class NewsController extends \framework\Controller {
             header ('Location: /Billet-Simple-Pour-Alaska/');
             exit();
         }
+
         $table = $this->selectTable($this->path);
         $tableComs = $this->selectTableComments($this->path);
 

@@ -73,21 +73,25 @@ class RegisterController extends Controller
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
             $users = $this->app->getManager('Users');
 
-            $action = $_SESSION['anonyme'] ? 'updateUsers' : 'addRealUsers';
+            $action = 'addRealUsers';
+            if($_SESSION['anonyme']){
+                $action = 'updateUsers';
+                $updateCom = $this->app->getManager('comments');
+                $updateCom->updateAuthorComment($_SESSION['anonymeName'], $name);
+            }
             $users->$action($name, $passHash, $email);
-
-            unset($_SESSION['anonyme']);
-            unset($_SESSION['invalid-name']);
-            unset($_SESSION['invalid-pass']);
-            unset($_SESSION['invalid-confirmation']);
-            unset($_SESSION['invalid-mail']);
-            unset($_SESSION['pseudo-Exist']);
-
-            $_SESSION['successRegister'] = true;
-            header('Location: connexion');
-            exit();
+//            unset($_SESSION['anonyme']);
+//            unset($_SESSION['invalid-name']);
+//            unset($_SESSION['invalid-pass']);
+//            unset($_SESSION['invalid-confirmation']);
+//            unset($_SESSION['invalid-mail']);
+//            unset($_SESSION['pseudo-Exist']);
+//
+//            $_SESSION['successRegister'] = true;
+//            header('Location: connexion');
+//            exit();
         }
-        header('Location: inscription');
+//        header('Location: inscription');
     }
     public function userNameCheck($name){
         if(isset($name)){
@@ -111,6 +115,7 @@ class RegisterController extends Controller
                 }
                 elseif ($anonyme[0] === 'Anonyme'){
                     $_SESSION['anonyme'] = true;
+                    $_SESSION['anonymeName'] = $user;
                     return true;
                 }
                 $_SESSION['pseudo-Exist'] = 'Ce nom d\'utilisateur est déjà rattaché à un email.'  ;

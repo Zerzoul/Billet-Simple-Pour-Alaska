@@ -40,31 +40,31 @@ class UsersManager extends Manager
         return $usersCount;
     }
     public function addAnonymeUsers($pseudo,$email){
-        $addUser = $this->pdo->prepare('INSERT INTO user(pseudo, email, statue) VALUES (:pseudo, :email, :statue)');
+        $addUser = $this->pdo->prepare('INSERT INTO user(pseudo, email) VALUES (:pseudo, :email)');
         $addUser->execute(array(
             'pseudo' => $pseudo,
             'email' => $email,
-            'statue' => parent::USER_ACTIF,
         ));
         return $addUser;
     }
     public function addRealUsers($pseudo, $passHash,$email){
-        $addUser = $this->pdo->prepare('INSERT INTO user(pseudo, email, password,statue) VALUES (:pseudo, :email, :password,:statue)');
+        $addUser = $this->pdo->prepare('INSERT INTO user(pseudo, email, password) VALUES (:pseudo, :email, :password)');
         $addUser->execute(array(
             'pseudo' => $pseudo,
             'email' => $email,
             'password' => $passHash,
-            'statue' => parent::USER_ACTIF,
         ));
         return $addUser;
     }
     public function updateUsers($pseudo, $passHash, $email){
+        var_dump($pseudo, $passHash, $email);
         $updateUser = $this->pdo->prepare('UPDATE user SET pseudo = :pseudo, password = :password WHERE email = :email');
-        $updateUser->execute(array(
+        $update = $updateUser->execute(array(
             'pseudo' => $pseudo,
             'email' => $email,
             'password' => $passHash,
         ));
-        return $updateUser;
+        var_dump($update);
+        return $update;
     }
 }

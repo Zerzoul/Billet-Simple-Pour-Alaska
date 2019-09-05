@@ -14,6 +14,10 @@ class DashBoardController extends Controller
         $billetToValidate = $billet->getCountBillet('0', 2);
         $billetPublished = $billet->getCountBillet('0', 1);
 
+        $comment = $this->app->getManager('comments');
+        $newComment = $comment->getCountComment('statue', 6);
+        $reportedComment = $comment->getCountComment('reported', '1');
+
         require 'app/view/admin/Dashboard/dashboard.php';
     }
 }
