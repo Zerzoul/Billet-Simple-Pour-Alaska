@@ -17,7 +17,7 @@
             </p>
         </div>
         <div class="signature_about">
-            <img src="public/images/signature.png" alt="signature de Jean Forteroche" /> 
+            <img src="Public/images/signature.png" alt="signature de Jean Forteroche" />
         </div>
     </div>
 </div>

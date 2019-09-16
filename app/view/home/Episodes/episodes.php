@@ -1,7 +1,7 @@
 <div class="body_content">
     <div class="synopsis_content">
         <div class="synopsis_content_flex">
-            <img src="public/images/couverture.jpg" alt="converture Billet Simple Pour l'Alaska">
+            <img src="Public/images/couverture.jpg" alt="converture Billet Simple Pour l'Alaska">
         </div>
         <div class="undertitle_content">
             <h2>Synopsis</h2>
@@ -35,7 +35,7 @@
                     <h3>Chapitre <?= $episode->id ?> - <?= $episode->title ?></h3>
                 </div>
                 <div class="btn_elmt">
-                    <a href="/Billet-Simple-Pour-Alaska/chapitre-<?= $this->urlEncode($episode->id) ?>"><p>Lire</p></a>
+                    <a href="chapitre-<?= $this->urlEncode($episode->id) ?>"><p>Lire</p></a>
                 </div>
             </div>
             <?php

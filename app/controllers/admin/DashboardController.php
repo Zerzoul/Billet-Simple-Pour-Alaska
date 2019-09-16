@@ -3,7 +3,7 @@
 namespace controllers\admin;
 use framework\Controller;
 
-class DashBoardController extends Controller
+class DashboardController extends Controller
 {
     protected $countnewCom;
     protected $countBillet;

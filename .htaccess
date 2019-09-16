@@ -1,7 +1,10 @@
 RewriteEngine On
 
+RewriteBase /Billet-Simple-Pour-Alaska/adminManager/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^adminManager/(.*)$ index.php?action=$1 [QSA,L]
+
+RewriteBase /Billet-Simple-Pour-Alaska/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 

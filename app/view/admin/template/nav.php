@@ -1,4 +1,4 @@
-<div class=" p-3 bg-info column text-white mh-100" id="navbarMenuContent" style="height: 100%; id">
+<div class=" p-3 bg-info column text-white mh-100"  style="height: 100%; id">
         <div class="col-sm">
             <div class="dropdown-divider"></div>
             <div class="text-center">

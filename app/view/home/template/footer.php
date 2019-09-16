@@ -15,8 +15,8 @@
     </div>
     <div class="footer_block_reseaux">
         <ul>
-            <li><img src="public/images/logo_facebook_footer.png" alt="logo Facebook"></li>
-            <li><img src="public/images/logo_twitter_footer.png" alt="logo Facebook"></li>
+            <li><img src="Public/images/logo_facebook_footer.png" alt="logo Facebook"></li>
+            <li><img src="Public/images/logo_twitter_footer.png" alt="logo Facebook"></li>
         </ul>
     </div>
 </div>

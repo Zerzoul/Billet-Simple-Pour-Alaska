@@ -14,11 +14,11 @@
             </svg>
         </a>
             <ul class="nav_list">
-                <a href="/Billet-Simple-Pour-Alaska/"><li>News</li></a>
-                <a href="episodes"><li>Episodes</li></a>
-                <a href="about"><li>A propos</li></a>
+                <li><a href="/Billet-Simple-Pour-Alaska/">News</a></li>
+                <li><a href="episodes">Episodes</a></li>
+                <li><a href="about">A propos</a></li>
                 <?php $connection =  isset($_SESSION['userName']) ? 'deconnexion' : 'connexion' ;?>
-                <a href="<?= $connection ?>"><li><?= ucfirst($connection) ?></li></a>
+                <li><a href="<?= $connection ?>"><?= ucfirst($connection) ?></a></li>
             </ul>
          </div>
     <div class="nav_shadow"></div>

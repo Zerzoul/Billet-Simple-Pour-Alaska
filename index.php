@@ -1,4 +1,5 @@
 <?php
+
 require 'framework/lib/Autoloader.php';
 \framework\Autoloader::register();
 
@@ -21,5 +22,5 @@ catch (Exception $e){
 }
 
 $content = ob_get_clean();
-require 'app/view/'.$direction.'/template/layout.php';
+require_once 'app/view/'.$direction.'/template/layout.php';
 
