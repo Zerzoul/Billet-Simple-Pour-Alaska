@@ -1,29 +1,32 @@
 <?php
+
 namespace framework;
 
-class Manager{
+class Manager
+{
 
-    protected $pdo;
-    protected $manager;
-
-    /*PUBLICATION STATUE POST*/
     const PUBLISHED = 1;
     const VALIDATION_BEFORE = 2;
-    const ROUGH = 3;
 
-    /*PUBLICATION STATUE COMS*/
+    /*PUBLICATION STATUE POST*/
+    const ROUGH = 3;
     const COM_VALID = 4;
     const COM_IGNORE = 5;
-    const COM_NEW = 6;
 
-    /*STATUE USER*/
+    /*PUBLICATION STATUE COMS*/
+    const COM_NEW = 6;
     const USER_ACTIF = 7;
     const USER_BANNED = 8;
 
-    public function __construct($dbConnect){
+    /*STATUE USER*/
+    protected $pdo;
+    protected $manager;
+
+    public function __construct($dbConnect)
+    {
         $this->pdo = $dbConnect;
 
-        if(is_null($this->manager)){
+        if (is_null($this->manager)) {
             $split = explode('\\', get_class($this));
             $class_name = end($split);
 

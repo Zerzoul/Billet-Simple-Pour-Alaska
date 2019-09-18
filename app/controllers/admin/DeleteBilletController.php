@@ -4,25 +4,27 @@
 namespace controllers\admin;
 require_once 'BilletController.php';
 
-class DeleteBilletController extends BilletController{
+class DeleteBilletController extends BilletController
+{
 
-    public function listTrashBillet(){
+    public function listTrashBillet()
+    {
 
         $type = $this->type;
         $id = $this->id;
         $path = $this->path;
         $titleList = 'Corbeille';
-        if(is_null($type)){
+        if (is_null($type)) {
             $type = 'news';
         }
         $typeSelected = $type;
         $isTrashed = 1;
 
-        if(!is_null($type)){
+        if (!is_null($type)) {
             $table = $this->selectTable($type);
             $listBillet = $this->displayAllBillet($table, $isTrashed);
 
-            if(!is_null($id)){
+            if (!is_null($id)) {
                 $actionBillet = $this->getTheBillet($table, $id, $isTrashed);
                 $statue = $this->getTheStatue($actionBillet->statue);
             }
@@ -38,7 +40,8 @@ class DeleteBilletController extends BilletController{
     }
 
 
-    public function deleteBilletValidation(){
+    public function deleteBilletValidation()
+    {
         $type = $this->type;
         $id = $this->id;
 
@@ -46,8 +49,8 @@ class DeleteBilletController extends BilletController{
         $news = $this->app->getManager('news');
         $isTrashed = $news->getTheBilletWithoutTrash($table, $id);
 
-        if($this->path === 'billettodelete' || $this->path === 'trashbillettodelete'){
-            if($isTrashed->isTrashed !== '0'){
+        if ($this->path === 'billettodelete' || $this->path === 'trashbillettodelete') {
+            if ($isTrashed->isTrashed !== '0') {
                 $messageToValid = 'de supprimer définitivement :';
             } else {
                 $messageToValid = 'de mettre à la corbeille :';
@@ -59,21 +62,23 @@ class DeleteBilletController extends BilletController{
             $deleteComs = '';
             $action = 'Restaurer';
         }
-        if($type === 'news'){
-            $typeToDefine = 'La '.ucfirst($type);
+        if ($type === 'news') {
+            $typeToDefine = 'La ' . ucfirst($type);
         } else {
-            $typeToDefine = 'L\' '.ucfirst($type);
+            $typeToDefine = 'L\' ' . ucfirst($type);
         }
-        $billetToDelete = $typeToDefine.' N° '.$id.' <span class="font-italic">"'.$isTrashed->title.'"</span>.';
+        $billetToDelete = $typeToDefine . ' N° ' . $id . ' <span class="font-italic">"' . $isTrashed->title . '"</span>.';
 
         require 'app/view/admin/Billets/deleteBilletValidation.php';
     }
-    public function deleteBillet(){
+
+    public function deleteBillet()
+    {
         $type = $this->type;
         $id = $this->id;
         var_dump($this->path);
 
-        if($_POST['validationDeleteBillet'] == 'Annuler'){
+        if ($_POST['validationDeleteBillet'] == 'Annuler') {
             $this->cancelDeleteAction();
             exit();
         }
@@ -82,13 +87,13 @@ class DeleteBilletController extends BilletController{
         $news = $this->app->getManager('news');
         $isTrashed = $news->getTheBilletWithoutTrash($table, $id);
 
-        if($isTrashed->isTrashed !== '0'){
-            if($_POST['validationDeleteBillet'] == 'Restaurer'){
+        if ($isTrashed->isTrashed !== '0') {
+            if ($_POST['validationDeleteBillet'] == 'Restaurer') {
                 $news->restoreThisBillet($table, $id);
                 header('Location: billets');
                 exit();
             }
-            $news->deleteThisBillet($table, $tableCom,$id);
+            $news->deleteThisBillet($table, $tableCom, $id);
             header('Location: trashbillets');
             exit();
         } else {
@@ -97,9 +102,11 @@ class DeleteBilletController extends BilletController{
             exit();
         }
     }
-    public function cancelDeleteAction(){
-        $this->path === 'billettodelete' ? $path = 'billets' : $path = 'trashbillets' ;
-        header('Location:'.$path);
+
+    public function cancelDeleteAction()
+    {
+        $this->path === 'billettodelete' ? $path = 'billets' : $path = 'trashbillets';
+        header('Location:' . $path);
     }
 
 }

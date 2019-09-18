@@ -1,6 +1,7 @@
 <?php
 
 namespace controllers\admin;
+
 use framework\Controller;
 
 class DashboardController extends Controller
@@ -8,7 +9,8 @@ class DashboardController extends Controller
     protected $countnewCom;
     protected $countBillet;
 
-    public function dashboard(){
+    public function dashboard()
+    {
         $billet = $this->app->getManager('news');
         $billetRough = $billet->getCountBillet('0', 3);
         $billetToValidate = $billet->getCountBillet('0', 2);

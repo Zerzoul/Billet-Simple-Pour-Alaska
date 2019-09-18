@@ -4,28 +4,30 @@
 namespace controllers\admin;
 require 'BilletController.php';
 
-class EditBilletController extends BilletController{
+class EditBilletController extends BilletController
+{
 
-    protected $addBilletOnly =  true;
-    protected $buttonName =  'Ajouter';
+    protected $addBilletOnly = true;
+    protected $buttonName = 'Ajouter';
 
     protected $updateStatue = null;
     protected $updateTitle = null;
     protected $updatePost = null;
     protected $updateDate = null;
 
-    public function billetForm(){
+    public function billetForm()
+    {
         $type = $this->type;
         $id = $this->id;
 
-        if(!is_null($type) && !is_null($id)){
-            $this->loadForUpdateBillet($type,$id);
+        if (!is_null($type) && !is_null($id)) {
+            $this->loadForUpdateBillet($type, $id);
         }
 
         $addBilletOnly = $this->addBilletOnly;
         $statue = $this->updateStatue;
 
-        $title = $this->form->input("text", "titleBillet",  $this->updateTitle, "form-control", true);
+        $title = $this->form->input("text", "titleBillet", $this->updateTitle, "form-control", true);
         $titleLabel = $this->form->label("Titre", "titleBillet");
 
         $contentBilletTextarea = $this->form->textarea("contentBillet", $this->updatePost);
@@ -34,13 +36,14 @@ class EditBilletController extends BilletController{
         require_once 'app/view/admin/Billets/addBillet.php';
     }
 
-    public function loadForUpdateBillet($type,$id){
+    public function loadForUpdateBillet($type, $id)
+    {
         $this->addBilletOnly = false;
         $this->buttonName = 'Modifier';
         $table = $this->selectTable($type);
         $isTrashed = 0;
         $updateBillet = $this->getTheBillet($table, $id, $isTrashed);
-        if($updateBillet->isTrashed !== '0'){
+        if ($updateBillet->isTrashed !== '0') {
             return;
         }
 
@@ -49,10 +52,11 @@ class EditBilletController extends BilletController{
         $this->updatePost = $updateBillet->post;
     }
 
-    public function checkBillet(){
+    public function checkBillet()
+    {
         $type = $this->type;
         $id = $this->id;
-        if(!is_null($type) && !is_null($id)){
+        if (!is_null($type) && !is_null($id)) {
             $this->addBilletOnly = false;
             $this->updateDate = date("Y-m-d H:i:s");
             $table = $this->selectTable($type);
@@ -65,18 +69,16 @@ class EditBilletController extends BilletController{
         $post = $_POST['contentBillet'];
         $statue = $_POST['statue'];
 
-        if($this->addBilletOnly){
+        if ($this->addBilletOnly) {
             $creatBillet = $this->addBillet($table, $title, $post, $statue);
         } else {
             $creatBillet = $this->updateBillet($id, $table, $title, $post, $statue, $this->updateDate);
         }
 
-        if($creatBillet){
+        if ($creatBillet) {
             header('Location: billets');
         }
     }
-
-
 
 
 }

@@ -8,7 +8,7 @@
                     <?= $name ?>
                     <div class="error_content">
                         <?php
-                        if(!is_null($error_name)){
+                        if (!is_null($error_name)) {
                             echo $error_name;
                         }
                         ?>
@@ -21,7 +21,7 @@
                     <?= $mail ?>
                     <div class="error_content">
                         <?php
-                        if(!is_null($error_mail)){
+                        if (!is_null($error_mail)) {
                             echo $error_mail;
                         }
                         ?>
@@ -34,7 +34,7 @@
                     <?= $pass ?>
                     <div class="error_content">
                         <?php
-                        if(!is_null($error_pass)){
+                        if (!is_null($error_pass)) {
                             echo $error_pass;
                         }
                         ?>
@@ -46,7 +46,7 @@
                     <?= $passConfirm ?>
                     <div class="error_content">
                         <?php
-                        if(!is_null($error_confirm)){
+                        if (!is_null($error_confirm)) {
                             echo $error_confirm;
                         }
                         ?>
@@ -54,7 +54,7 @@
                 </div>
 
 
-                <div  class="form_flex">
+                <div class="form_flex">
                     <?= $submit ?>
                 </div>
             </form>

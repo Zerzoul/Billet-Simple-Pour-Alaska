@@ -8,23 +8,24 @@ require_once 'BilletController.php';
 class ListBilletController extends BilletController
 {
 
-    public function listBillet(){
+    public function listBillet()
+    {
         $type = $this->type;
         $id = $this->id;
         $path = $this->path;
         $titleList = 'Listes des billets';
-        if(is_null($type)){
+        if (is_null($type)) {
             $type = 'news';
         }
 
         $typeSelected = $type;
         $isTrashed = 0;
 
-        if(!is_null($type)){
+        if (!is_null($type)) {
             $table = $this->selectTable($type);
             $listBillet = $this->displayAllBillet($table, $isTrashed);
 
-            if(!is_null($id)){
+            if (!is_null($id)) {
                 $actionBillet = $this->getTheBillet($table, $id, $isTrashed);
                 $statue = $this->getTheStatue($actionBillet->statue);
             }
@@ -38,8 +39,6 @@ class ListBilletController extends BilletController
 
         require parent::LIST_BILLET_PATH;
     }
-
-
 
 
 }

@@ -1,10 +1,12 @@
 <?php
+
 namespace controllers\admin;
 
 
 class UsersController extends \framework\Controller
 {
-    public function usersManager(){
+    public function usersManager()
+    {
         $usersCount = $this->app->getManager('users');
         $usersCount = $usersCount->countFromUsers();
 

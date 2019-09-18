@@ -33,7 +33,8 @@
             </p>
             <div>
                 <h5>Nouveau commentaire</h5>
-                <p> Vous avez <span class="font-weight-bold"><?= $newComment->commentCount  ?></span> nouveau(x) commentaire(s) à valider</p>
+                <p> Vous avez <span class="font-weight-bold"><?= $newComment->commentCount ?></span> nouveau(x)
+                    commentaire(s) à valider</p>
             </div>
             <div>
                 <h5>Commentaire signalé</h5>

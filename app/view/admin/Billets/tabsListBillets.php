@@ -1,4 +1,4 @@
-<h5><?= ucfirst($typeSelected)?></h5>
+<h5><?= ucfirst($typeSelected) ?></h5>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -12,14 +12,13 @@
 
 
     <?php
-    foreach ($listBillet as $billet)
-    {
+    foreach ($listBillet as $billet) {
         ?>
 
         <tbody>
         <tr>
             <th scope="row"><?= $billet->id ?></th>
-            <td><?php echo $this->statueReport($billet) ;?></td>
+            <td><?php echo $this->statueReport($billet); ?></td>
 
             <td><?php $date = new DateTime($billet->date_create);
                 echo $date->format('d/m/Y à H:i'); ?></td>
@@ -27,9 +26,11 @@
             <td>
                 <a href="<?= $path ?>-<?= $type ?>-<?= $billet->id ?>" class="text-light">
                     <button
-                        <?php if(isset($actionBillet->id)) { echo  $billet->id === $actionBillet->id ? 'disabled' : '';} ?>
+                        <?php if (isset($actionBillet->id)) {
+                            echo $billet->id === $actionBillet->id ? 'disabled' : '';
+                        } ?>
                             class="btn btn-primary">
-                       Voir
+                        Voir
                     </button>
                 </a>
             </td>

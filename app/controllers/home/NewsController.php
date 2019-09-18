@@ -1,16 +1,19 @@
 <?php
+
 namespace controllers\home;
 
-class NewsController extends \framework\Controller {
+class NewsController extends \framework\Controller
+{
 
 
-    public function listNewsPost(){
+    public function listNewsPost()
+    {
         $table = $this->selectTable($this->path);
 
         $news = $this->app->getManager('news');
         $news = $news->getListNews($table, 'DESC');
 
-        foreach($news as $new){
+        foreach ($news as $new) {
             $tableComs = $this->selectTableComments($this->path);
             $coms = $this->app->getManager('comments');
             $coms = $coms->countComs($tableComs, $new->id);
@@ -19,9 +22,11 @@ class NewsController extends \framework\Controller {
             require self::NEWS_PATH;
         }
     }
-    public function newsPost(){
-        if(is_null($this->id) || $this->id === 0){
-            header ('Location: /Billet-Simple-Pour-Alaska/');
+
+    public function newsPost()
+    {
+        if (is_null($this->id) || $this->id === 0) {
+            header('Location: /Billet-Simple-Pour-Alaska/');
             exit();
         }
 

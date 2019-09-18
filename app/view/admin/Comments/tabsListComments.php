@@ -1,4 +1,4 @@
-<h5><?= ucfirst($typeSelected)?></h5>
+<h5><?= ucfirst($typeSelected) ?></h5>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -12,15 +12,14 @@
 
 
     <?php
-    foreach ($listCom as $com)
-    {
+    foreach ($listCom as $com) {
         ?>
 
         <tbody>
         <tr>
             <th scope="row"><?= $com->id ?></th>
 
-            <td><?php echo $this->statueReport($com) ;?></td>
+            <td><?php echo $this->statueReport($com); ?></td>
 
             <td><?php $date = new DateTime($com->date);
                 echo $date->format('d/m/Y à H:i'); ?></td>
@@ -29,8 +28,11 @@
             <td>
                 <form action="<?= $path ?>-<?= $type ?>-<?= $com->post_id ?>" method="get">
                     <button type="submit" class="btn btn-primary " name="idCom" value="<?= $com->id ?>"
-                        <?php if(isset($actionCom->id)) { echo  $com->id === $actionCom->id ? 'disabled' : '';} ?>
-                    >Voir</button>
+                        <?php if (isset($actionCom->id)) {
+                            echo $com->id === $actionCom->id ? 'disabled' : '';
+                        } ?>
+                    >Voir
+                    </button>
                 </form>
 
             </td>

@@ -2,7 +2,7 @@
     <div class="col-md-6 offset-md-3">
         <h2>Admin Manager</h2>
         <div>
-            <?= $errorMessage?>
+            <?= $errorMessage ?>
         </div>
         <div>
             <form action="" method="post">
