@@ -1,15 +1,9 @@
 <div class="footer_block">
     <div class="footer_block_list">
         <ul>
-            <a href="/Billet-Simple-Pour-Alaska/">
-                <li>News</li>
-            </a>
-            <a href="episodes">
-                <li>Episodes</li>
-            </a>
-            <a href="about">
-                <li>A propos</li>
-            </a>
+            <li><a href="/Billet-Simple-Pour-Alaska/">News</a></li>
+            <li><a href="episodes">Episodes</a></li>
+            <li><a href="about">A propos</a></li>
         </ul>
     </div>
     <div class="footer_block_list">
